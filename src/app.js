@@ -64,7 +64,9 @@ app.use(express.urlencoded());
 app.use(express.json());
 
 app.get("/", (req, res) => {
-  res.render("home");
+  res.render("home", {
+    style: "home.css",
+  });
 });
 
 app.get("/login", (req, res) => {
