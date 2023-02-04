@@ -16,7 +16,6 @@
 // app.use(bodyParser.json({ limit: "50mb" }));
 // // app.use(cookieParser());
 
-
 // app.use(express.static(path.join(__dirname,'/src/resourses')));
 // app.engine("hbs", exphbs.engine({extname:'.hbs'}));
 // app.set("view engine", ".hbs");
@@ -44,37 +43,44 @@
 //     console.log(`Example app listening on port ${port}`);
 // });
 
-const express = require('express')
-const morgan = require('morgan')
-const exphbs = require('express-handlebars')
-const path = require('path');
-const app = express()
-const port = 3000
+const express = require("express");
+const morgan = require("morgan");
+const exphbs = require("express-handlebars");
+const path = require("path");
+const app = express();
+const port = 3000;
 
 // Template engine
-app.engine('hbs', exphbs.engine({extname: '.hbs'}))
-app.set('view engine', 'hbs')
-app.set('views', path.join(__dirname, 'resources/views'))
+app.engine("hbs", exphbs.engine({ extname: ".hbs" }));
+app.set("view engine", "hbs");
+app.set("views", path.join(__dirname, "resources/views"));
+app.use(express.static(path.join(__dirname, "public")));
 
 // HTTP logger
-app.use(morgan('combined'))
+app.use(morgan("combined"));
 
 //Middleware
-app.use(express.urlencoded())
-app.use(express.json())
+app.use(express.urlencoded());
+app.use(express.json());
 
-app.use(express.static(path.join(__dirname, 'public')))
+app.get("/", (req, res) => {
+  res.render("home");
+});
 
-app.get('/', (req, res) => {
-    res.render('home')
-})
+app.get("/login", (req, res) => {
+  res.render("login", {
+    style: "login.css",
+  });
+});
 
-app.get('/login', (req, res) => {
-    res.render('login')
-})
+app.get("/register", (req, res) => {
+  res.render("register", {
+    style: "register.css",
+  });
+});
 
-app.get('/search', (req, res) => {
-    res.render('search')
-})
+app.get("/forgotpass", (req, res) => {
+  res.render("forgotpass");
+});
 
-app.listen(port)
+app.listen(port);
