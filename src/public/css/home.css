@@ -20,7 +20,7 @@ body{
 	padding-bottom: 15px;
 	font-size: 20px;
     font-weight: 600;
-	color: #a52727;
+	color: #fff;
 	padding-top: 20px;
 }
 .social-links img{
@@ -33,7 +33,7 @@ body{
 	color: #a52727;
 }
 .social-icons a{
-	color: #a52727;
+	color: #fff1f8ad;
 }
 .social-icons a:hover{
 	color: #000;
@@ -41,10 +41,11 @@ body{
 .social-icons a i{
 	box-shadow: rgb(0 0 0 / 40%) 0px 4px 12px;
     padding: 0.4rem 1rem 0.4rem 1rem;
-    border-radius: 3px;
+    border-radius: 20px;
     color: #a52727;
 	font-size: 16px;
 	margin-right: 12px;
+	background-color: #fff1f8ad;
 }
 li{
 	list-style: none;
@@ -53,7 +54,7 @@ li{
 	padding-bottom: 15px;
 	font-size: 20px;
     font-weight: 600;
-	color: #a52727;
+	color: #fff;
 	padding-top: 20px;
 }
 .address img{
@@ -63,14 +64,20 @@ li{
 	color: #303030;
     font-size: 15px;
     font-weight: 500;
-	color: #a52727;
+	color: #fff1f8ad;
 
 }
 .address-links li i{
+	box-shadow: rgb(0 0 0 / 40%) 0px 4px 12px;
+    height: 30px;
+	width: 40px;
+    border-radius: 20px;
 	font-size: 16px;
     padding-right: 8px;
-	color: #a52727;
-
+	color: #fff;
+	text-align: center;
+	padding-left: 7px;
+	margin-right: 5px;
 }
 .address-links li i:nth-child(1){
 	padding-top: 9px;
@@ -79,7 +86,13 @@ li{
 	font-weight: 500;
     font-size: 15px;
 	display: flex;
+	color:#fff1f8ad ;
 }
+
+.address-links li {
+	padding-bottom: 10px;
+}
+
 .address-links{
 	    line-height: 32px;
 		color: #a52727;
