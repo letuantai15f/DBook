@@ -1,22 +1,11 @@
-
 const express = require("express");
 const morgan = require("morgan");
 const exphbs = require("express-handlebars");
 const path = require("path");
 const app = express();
 const port = 3000;
-//db
-var mysql = require('mysql');
-var con = mysql.createConnection({
-  host: "sql12.freesqldatabase.com",
-  user: "sql12596627",
-  password: "1UKzBH9irm",
-  database: "sql12596627"
-});
-con.connect(function(err) {
-  if (err) throw err;
-  console.log("Connected!!!")
-});
+require('dotenv').config()
+const api = require("./routes/api");
 
 
 
@@ -31,8 +20,9 @@ app.use(express.static(path.join(__dirname, "public")));
 app.use(morgan("combined"));
 
 //Middleware
-app.use(express.urlencoded());
+// app.use(express.urlencoded());
 app.use(express.json());
+app.use("/api", api);
 
 app.get("/", (req, res) => {
   res.render("home", {
