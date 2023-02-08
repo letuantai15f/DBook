@@ -37,23 +37,45 @@ app.use(express.json());
 app.get("/", (req, res) => {
   res.render("home", {
     style: "home.css",
+    trang: "modal_signup"
   });
 });
 
 app.get("/login", (req, res) => {
-  res.render("login", {
-    style: "login.css",
+  res.render("auth", {
+    style: "auth.css",
+    isLogin: true
   });
 });
 
 app.get("/register", (req, res) => {
-  res.render("register", {
-    style: "register.css",
+  res.render("auth", {
+    style: "auth.css",
+    isRegister: true
   });
 });
 
 app.get("/forgotpass", (req, res) => {
-  res.render("forgotpass");
+  res.render("auth", {
+    style: "auth.css",
+    isEmailXacThuc: true
+  });
 });
 
-app.listen(port,()=>{console.log("Port running:"+port)});
+app.get("/xacthuc", (req, res) => {
+  res.render("auth", {
+    style: "auth.css",
+    isXacThucMa: true
+  });
+});
+
+app.get("/resetpassword", (req, res) => {
+  res.render("auth", {
+    style: "auth.css",
+    isResetPass: true
+  });
+});
+
+
+
+app.listen(port);
