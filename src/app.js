@@ -7,6 +7,7 @@ const port = 3000;
 require('dotenv').config()
 const api = require("./routes/api");
 const routerAuth = require("./routes/auth/Auth");
+const routerHome = require("./routes/home/Home");
 
 
 
@@ -24,13 +25,7 @@ app.use(morgan("combined"));
 app.use(express.json());
 app.use("/api", api);
 app.use("/auth", routerAuth);
-
-app.get("/", (req, res) => {
-  res.render("home", {
-    style: "home.css",
-    trang: "modal_signup"
-  });
-});
+app.use("/home", routerHome);
 
 
 app.listen(port);
