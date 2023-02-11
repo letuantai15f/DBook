@@ -1,0 +1,57 @@
+<div style="display: flex; height: 100%;">
+    <div style="flex: 0.3;">
+        <div class="mt-4" style="display: flex; justify-content: center;">
+            {{#if isEmailXacThuc}}
+            <form style="width: 70%; margin-top: 50%;">
+                <h1 style="text-align: center;">Quên mật khẩu</h1>
+                <div class="form-group" style="display: flex;">
+                    <input type="email" class="form-control" placeholder="Email">
+                </div>
+                <div style="text-align: center;">
+                    <button type="submit" class="btn btn-primary" style="width: 100%;">Xác nhận</button>
+                </div>
+                <div style="text-align: center; padding-top: 20px;">
+                    <a href="http://localhost:3000/auth/login">Quay lại trang đăng nhập Đăng nhập</a>
+                </div>
+            </form>
+            {{/if}}
+
+            {{#if isXacThucMa}}
+            <form style="width: 70%; margin-top: 50%;">
+                <h1 style="text-align: center;">Xác thực mã</h1>
+                <div class="form-group" style="display: flex;">
+                    <input type="text" class="form-control" placeholder="Nhập mã xác thực">
+                </div>
+                <div style="text-align: center;">
+                    <button type="submit" class="btn btn-primary" style="width: 100%;">Xác nhận</button>
+                </div>
+                <div style="text-align: center; padding-top: 20px;">
+                    <a href="http://localhost:3000/login">Quay lại trang đăng nhập Đăng nhập</a>
+                </div>
+            </form>
+            {{/if}}
+
+            {{#if isResetPass}}
+            <form style="width: 70%; margin-top: 50%;">
+                <h1 style="text-align: center;">Đặt lại mật khẩu</h1>
+                <div class="form-group" style="display: flex;">
+                    <input type="password" class="form-control" placeholder="Mật khẩu mới">
+                </div>
+                <div class="form-group" style="display: flex;">
+                    <input type="password" class="form-control" placeholder="Nhập lại mật khẩu">
+                </div>
+                <div style="text-align: center;">
+                    <button type="submit" class="btn btn-primary" style="width: 100%;">Xác nhận</button>
+                </div>
+                <div style="text-align: center; padding-top: 20px;">
+                    <a href="http://localhost:3000/login">Quay lại trang đăng nhập Đăng nhập</a>
+                </div>
+            </form>
+            {{/if}}
+        </div>
+    </div>
+    <div
+        style="display: flex; justify-content: center; flex: 0.7; background: linear-gradient(270deg, #52AA8A 28.97%, rgba(82, 170, 138, 0) 100%);">
+        <img src="img/logo_dbook.png" style="text-align: center;" />
+    </div>
+</div>
