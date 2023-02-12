@@ -2,28 +2,28 @@
     <div style="flex: 0.3;">
         <div class="mt-4" style="display: flex; justify-content: center;">
             {{#if isLogin}}
-                {{> login}}
+                {{> auth/login}}
             {{/if}}
 
             {{#if isRegister}}
-                {{> register}}
+                {{> auth/register}}
             {{/if}}
             
             {{#if isEmailXacThuc}}
-                {{> quen-mat-khau}}
+                {{> auth/quen-mat-khau}}
             {{/if}}
 
             {{#if isXacThucMa}}
-                {{> xac-thuc-ma}}
+                {{> auth/xac-thuc-ma}}
             {{/if}}
 
             {{#if isResetPass}}
-                {{> reset-pass}}
+                {{> auth/reset-pass}}
             {{/if}}
         </div>
     </div>
     <div
         style="display: flex; justify-content: center; flex: 0.7; background: linear-gradient(270deg, #52AA8A 28.97%, rgba(82, 170, 138, 0) 100%);">
-        <img src="img/logo_dbook.png" style="text-align: center;" />
+        <img src="/img/logo_dbook.png" style="text-align: center;" />
     </div>
 </div>
