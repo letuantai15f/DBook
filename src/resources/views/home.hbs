@@ -1,6 +1,10 @@
 <div>
     {{> menu-user}}
-    <div style="height: 2000px; margin-top: 200px;">Hello word</div>
+    {{#if isTrangChu}}
+        {{> home/trang-chu}}    
+    {{/if}}
+    {{#if isGioiThieu}}
+        {{> home/gioi-thieu}}
+    {{/if}}
     {{> footer}}
 </div>
-
