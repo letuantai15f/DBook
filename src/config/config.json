@@ -1,9 +1,9 @@
 {
   "development": {
-    "username": "sql12596627",
-    "password": "1UKzBH9irm",
-    "database": "sql12596627",
-    "host": "sql12.freesqldatabase.com",
+    "username": "gttrplwd_dbook",
+    "password": "Tai2525123",
+    "database": "gttrplwd_Dbook",
+    "host": "103.110.84.6",
     "dialect": "mysql",
     "logging":false,
     "timezone":"+07:00"
