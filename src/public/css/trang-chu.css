@@ -1,8 +1,6 @@
 .slideshow-container {
-  max-width: 1000px;
-  width: 1000px;
+  margin-top: 60px;
   position: relative;
-  margin: auto;
 }
 
 .mySlides {
@@ -36,7 +34,7 @@
 }
 
 img {
-  height: 220px;
+  height: 500px;
 }
 
 .reason .item {
@@ -131,7 +129,6 @@ img {
   height: 400px;
   background-size: 100%;
   background-repeat: no-repeat;
-  background-color: #a52727;
   display: flex;
   justify-content: center;
   align-items: center;
