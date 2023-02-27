@@ -34,7 +34,7 @@ class Sequelizer {
 
     this.sequelize
       .authenticate()
-      .then(() => console.log("Connection has been established successfully."))
+      .then(() => console.log("Connection databases successfully."))
       .catch((err) =>
           console.log("Unable to connect to the database:", err)
       );
