@@ -1,10 +1,13 @@
 <div>
     {{> menu-user}}
     {{#if isTrangChu}}
-        {{> home/trang-chu}}    
+    {{> home/trang-chu}}
     {{/if}}
     {{#if isGioiThieu}}
-        {{> home/gioi-thieu}}
+    {{> home/gioi-thieu}}
+    {{/if}}
+    {{#if isDatLich}}
+    {{> home/dat-lich}}
     {{/if}}
     {{> footer}}
 </div>

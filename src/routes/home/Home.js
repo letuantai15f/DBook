@@ -16,5 +16,11 @@ routerHome.get("/gioi-thieu", (req, res) => {
   });
 });
 
+routerHome.get("/dat-lich", (req, res) => {
+  res.render("home", {
+    style: "dat-lich.css",
+    isDatLich: true,
+  });
+});
 
 module.exports = routerHome;
