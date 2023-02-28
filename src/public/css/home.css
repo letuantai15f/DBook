@@ -11,10 +11,11 @@ body {
   max-width: 1920px;
   margin: 0 auto;
   overflow-x: hidden;
-  font-family: poppins;
+  font-family: var(--body-font-family); 
 }
+
 #footer {
-  background: #0299c6;
+  background: #e8e8e8b3;
 }
 .social-links h2 {
   padding-bottom: 15px;

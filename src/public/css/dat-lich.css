@@ -6,7 +6,12 @@
   font-size: 17px;
   padding-left: 20px;
 }
-
+body {
+  background: var(--white-color);
+  font-family: var(--body-font-family);    
+  position: relative;
+ 
+}
 .chu-y {
   width: 40%;
 }

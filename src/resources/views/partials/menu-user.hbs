@@ -1,6 +1,6 @@
 <nav class="navbar navbar-expand-lg navbar-dark"
-  style="background-color: #0299C6; position: fixed; width: 100%; top: 0; z-index: 1;">
-  <a class="navbar-brand" href="#" style="font-size: 24px;">DBook</a>
+  style="background-color: #ffffff; position: fixed; width: 100%; top: 0; z-index: 1;">
+  <a class="navbar-brand" href="#" style="font-size: 40px; color: rgb(4, 108, 243);font-weight: 800;">DBOOK</a>
   <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent"
     aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
     <span class="navbar-toggler-icon"></span>
@@ -8,36 +8,41 @@
 
   <div class="collapse navbar-collapse" id="navbarSupportedContent">
     <ul class="navbar-nav mr-auto">
-      <li class="nav-item active">
-        <a class="nav-link" href="http://localhost:3000/home/trang-chu" style="font-size: 20px;">Trang chủ <span
+      <li class="nav-item active m-2">
+        <a class="nav-link" href="http://localhost:3000/home/trang-chu" style="font-size:18px; color: #686868;">Trang chủ <span
             class="sr-only">(current)</span></a>
       </li>
-      <li class="nav-item active">
-        <a class="nav-link" href="#" style="font-size: 20px;">Khoa <span class="sr-only">(current)</span></a>
+      <li class="nav-item active m-2">
+        <a class="nav-link" href="#" style="font-size: 18px; color: #686868;">Khoa <span class="sr-only">(current)</span></a>
       </li>
-      <li class="nav-item active">
-        <a class="nav-link" href="#" style="font-size: 20px;">Bác Sĩ <span class="sr-only">(current)</span></a>
-      </li>
-      <li class="nav-item active">
-        <a class="nav-link" href="http://localhost:3000/home/dat-lich" style="font-size: 20px;">Đặt lịch <span
+      <li class="nav-item active m-2">
+        <a class="nav-link" href="#" style="font-size: 18px;color: #686868;">Bác Sĩ <span class="sr-only">(current)</span></a>
+      </li> 
+      <li class="nav-item active m-2">
+        <a class="nav-link" href="http://localhost:3000/home/dat-lich" style="font-size: 18px;color: #686868;">Đặt lịch <span
             class="sr-only">(current)</span></a>
       </li>
-      <li class="nav-item active">
-        <a class="nav-link" href="http://localhost:3000/home/gioi-thieu" style="font-size: 20px;">Giới thiệu <span
+      <li class="nav-item active m-2">
+        <a class="nav-link" href="http://localhost:3000/home/gioi-thieu" style="font-size: 18px;color: #686868;">Giới thiệu <span
             class="sr-only">(current)</span></a>
       </li>
 
     </ul>
+    
     <ul class="nav navbar-nav navbar-right">
-      <li class="dropdown"><a class="dropdown-toggle" data-toggle="dropdown" href="#"
-          style="color: #fff; font-size: 20px;">Welcome Nguyen Tran Phuoc Sang</a>
+      <li>
+        <button type="button" class="btn btn-primary" style="font-size: 13px;">Đăng nhập</button>
+        <button type="button" class="btn btn-success" style="font-size: 13px;">Đăng ký</button>
+      </li>
+      {{!-- <li class="dropdown"><a class="" data-toggle="" href="#"
+          style="color: #000000; font-size: 25px;"><i class="fa-solid fa-bars"></i></a>
         <ul class="dropdown-menu" style="width: 100%;">
           <li style="margin-bottom: 10px;"><a href="#" style="color: #000; padding-left: 10px;"><img src="/img/user.png"
                 style="height: 30px; width: 30px; margin-right: 10px;" />Thông tin cá nhân</a></li>
           <li><a href="#" style="color: #000; padding-left: 10px;"><img src="/img/logout.png"
                 style="height: 30px; width: 30px; margin-right: 10px;" />Log Out</a></li>
         </ul>
-      </li>
+      </li> --}}
     </ul>
   </div>
 </nav>

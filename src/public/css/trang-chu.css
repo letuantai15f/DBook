@@ -2,6 +2,12 @@
   margin-top: 60px;
   position: relative;
 }
+body {
+  background: var(--white-color);
+  font-family: var(--body-font-family);    
+  position: relative;
+ 
+}
 
 .mySlides {
   display: none;

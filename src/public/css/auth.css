@@ -6,7 +6,12 @@
   border-radius: 15px;
   margin-top: 15px;
 }
+body {
+  background: var(--white-color);
+  font-family: var(--body-font-family);    
+  position: relative;
 
+}
 img.logo-google {
   height: 20px;
   width: 20px;
@@ -33,7 +38,7 @@ p {
   margin: 20px 0 15px;
   border-radius: 15px;
   width: 100%;
-  background-color: #52aa8a;
+  background-color: #0077ff;
 }
 
 .line {
