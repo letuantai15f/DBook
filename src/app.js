@@ -4,12 +4,10 @@ const exphbs = require("express-handlebars");
 const path = require("path");
 const app = express();
 const port = 3000;
-require('dotenv').config()
+require("dotenv").config();
 const api = require("./routes/api");
 const routerAuth = require("./routes/auth/Auth");
 const routerHome = require("./routes/home/Home");
-
-
 
 // Template engine
 app.engine("hbs", exphbs.engine({ extname: ".hbs" }));
@@ -25,7 +23,6 @@ app.use(express.static(path.join(__dirname, "public")));
 app.use(express.json());
 app.use("/api", api);
 app.use("/auth", routerAuth);
-app.use("/home", routerHome);
-
+app.use("/", routerHome);
 
 app.listen(port);
