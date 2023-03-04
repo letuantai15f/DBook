@@ -1,47 +1,133 @@
-<div class="container-fluid">
-    <div style="margin-top: 60px; background-color: #D9D9D9;">
-        <h5 style="padding-left: 20px;">Trang chủ / Đặt lịch</h5>
+<div style="margin-top: 84px; background-color: #D9D9D9;">
+    <h5 style="padding-left: 20px;">Trang chủ / Đặt lịch</h5>
+</div>
+<div style="padding-top: 50px;">
+    <h1 style="text-align: center; color: #8CCBD3;">Đăng ký khám bệnh</h1>
+    <div style="display: flex; justify-content: center;">
+        <div style="height: 5px; background-color: #8f8fa3; width: 10%;"></div>
     </div>
-    <div style="padding-top: 50px;">
-        <h1 style="text-align: center; color: #8CCBD3;">Đăng ký khám bệnh</h1>
-        <div style="display: flex; justify-content: center;">
-            <div style="height: 5px; background-color: #8f8fa3; width: 10%;"></div>
+</div>
+<div style="display: flex; justify-content: center;align-items: center; flex-direction: column; margin-top: 30px;">
+    <ul class="chu-y">
+        <p style="">Quý khách hàng có nhu cầu đặt hẹn khám tại
+            <strong>Dbook</strong>, xin vui lòng thực hiện theo hướng dẫn:
+        </p>
+        <li>- Đặt hẹn bằng cách gọi tổng đài Chăm sóc khách hàng tại số
+            <strong>0949211311</strong>
+            hoặc
+            <strong>0898899703</strong>
+        </li>
+        <li>- Đặt hẹn trực tuyến bằng cách điền thông tin vào mẫu bên dưới.</li>
+        <li>- Xin lưu ý, trong các trường hợp khẩn cấp, quý khách vui lòng đến ngay
+            cơ sở y tế gần nhất hoặc đến trực tiếp Dbook.</li>
+    </ul>
+    <div style="background-color: #4b9cd1; width: 40%;">
+        <div style="background-color: #3e5fdc;">
+            <h2>Đăng ký khám bệnh</h2>
         </div>
-    </div>
-    <div style="display: flex; justify-content: center;align-items: center; flex-direction: column; margin-top: 30px;">
-        <ul class="chu-y">
-            <p style="">Quý khách hàng có nhu cầu đặt hẹn khám tại <strong>Dbook</strong>, xin vui lòng thực hiện
-                theo hướng dẫn:</p>
-            <li>- Đặt hẹn bằng cách gọi tổng đài Chăm sóc khách hàng tại số <strong>0949211311</strong> hoặc
-                <strong>0898899703</strong>
-            </li>
-            <li>- Đặt hẹn trực tuyến bằng cách điền thông tin vào mẫu bên dưới.</li>
-            <li>- Xin lưu ý, trong các trường hợp khẩn cấp, quý khách vui lòng đến ngay cơ sở y tế gần nhất hoặc đến
-                trực
-                tiếp Dbook.</li>
-        </ul>
-        <div>
-            <div>
-                <h1>Đăng ký khám bệnh</h1>
+        <div style="display: flex; padding-top: 20px;">
+            <div style="flex: 0.5; padding-left: 20px;">
+                <select class="browser-default custom-select" style=" width: 90%;">
+                    <option value="">Chọn chuyên khoa</option>
+                    <option value="">Khoa Mắt</option>
+                    <option value="">Khoa Tai mũi họng</option>
+                    <option value="">Khoa Não</option>
+                    <option value="">Khoa Răng hàm mạch</option>
+                    <option value="">Khoa x</option>
+                    <option value="">Khoa y</option>
+                </select>
             </div>
-            <div>
-                <h3>Chọn loại dịch vụ khám</h3>
-                <div style="display: flex">
-                    <div class="form-check">
-                        <input class="form-check-input" type="radio" name="flexRadioDefault" id="flexRadioDefault1">
-                        <label class="form-check-label" for="flexRadioDefault1">
-                            Khám trực tiếp
-                        </label>
-                    </div>
-                    <div class="form-check" style="margin-left: 50px;">
-                        <input class="form-check-input" type="radio" name="flexRadioDefault" id="flexRadioDefault2"
-                            checked>
-                        <label class="form-check-label" for="flexRadioDefault2">
-                            Khám trực online
-                        </label>
+            <div style="flex: 0.5; padding-left: 20px;">
+                <select class="browser-default custom-select" style=" width: 90%;">
+                    <option value="">Chọn bác sĩ</option>
+                    <option value="">Bác sĩ Tài</option>
+                    <option value="">Bác sĩ Sang</option>
+                    <option value="">Bác sĩ Thủy</option>
+                    <option value="">Bác sĩ Liên</option>
+                    <option value="">Bác sĩ Mậu</option>
+                    <option value="">Bác sĩ Thúy</option>
+                </select>
+            </div>
+        </div>
+        <div style="display: flex; padding-top: 10px;">
+            <div class="column" style="flex: 0.5;">
+                <div style="width: 90%; padding-left: 20px;">
+                    <label class="col-form-label">Chọn ngày</label>
+                    <div class="input-group date" id="datepicker">
+                        <input type="text" class="form-control" />
+                        <span class="input-group-append">
+                            <span class="input-group-text bg-white">
+                                <i class="fa fa-calendar"></i>
+                            </span>
+                        </span>
                     </div>
                 </div>
             </div>
+            <div style="flex: 0.5; ">
+                <div style="width: 90%; padding-left: 20px;">
+                    <label class="col-form-label" style="margin-left: 0px;">Chọn giờ khám</label>
+                    <select class="browser-default custom-select">
+                        <option value="">----</option>
+                        <option value="">7h - 8h</option>
+                        <option value="">8h - 9h</option>
+                        <option value="">9h - 10h</option>
+                        <option value="">10h - 11h</option>
+                        <option value="">13h - 14h</option>
+                        <option value="">14h - 15h</option>
+                        <option value="">15h - 16h</option>
+                        <option value="">16h - 17h</option>
+                        <option value="">17h - 18h</option>
+                    </select>
+                </div>
+            </div>
+        </div>
+        <div style="width: 95%; padding: 10px 0 0 20px;">
+            <label class="col-form-label" style="margin-left: 0px;">Vấn đề sức khỏe cần khám</label>
+            <textarea autocomplete="off" rows="4"
+                placeholder="Nhập tình trạng sức khoẻ của bạn, câu hỏi dành cho bác sĩ và các vấn đề sức khỏe cần khám"
+                class="el-textarea__inner" style="min-height: 32.6px; width: 100%;"></textarea>
+        </div>
+        <div style="text-align: center; width: 95%; padding: 20px 0 20px 20px; border-radius: 20px;">
+            <button type="submit" class="btn btn-primary" style="width: 100%;">Xác nhận</button>
         </div>
     </div>
 </div>
+<div style="padding-top: 50px;">
+    <h1 style="text-align: center; color: #8CCBD3;">Các hình thức hỗ trợ</h1>
+    <div style="display: flex; justify-content: center;">
+        <div style="height: 5px; background-color: #8f8fa3; width: 10%;"></div>
+    </div>
+</div>
+<div style="display: flex; justify-content: center; align-items: center;">
+    <div class="ho-tro">
+        <img src="/img/trang-chu/customer-service.png" />
+        <h3>Hỗ trợ đặt khám</h3>
+        <p>0898899703 <br> 0949218455</p>
+    </div>
+    <div class="ho-tro">
+        <img src="/img/trang-chu/facebook.png" />
+        <h3>Fanpage Facebook</h3>
+        <p>Bấm để tới fanpage</p>
+    </div>
+    <div class="ho-tro">
+        <img src="/img/trang-chu/qr-zalo.png" />
+        <h3>QR Zalo</h3>
+        <p>Quết để đến Zalo</p>
+    </div>
+    <div class="ho-tro">
+        <img src="/img/trang-chu/email.png" />
+        <h3>Email liên hệ</h3>
+        <p>ntpsang231@gmail.com <br> tuantai@gmail.com</p>
+    </div>
+</div>
+<script type="text/javascript">
+    var dateToday = new Date();
+    var tempDate = new Date();
+    var dateEnd = new Date(tempDate.setDate(tempDate.getDate() + 7));
+    $(function () {
+        $('#datepicker').datepicker({
+            startDate: dateToday,
+            endDate: dateEnd,
+        });
+    });
+</script>
