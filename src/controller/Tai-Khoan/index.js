@@ -4,6 +4,6 @@ const taiKhoanController=require('./tai-khoan.controller')
 
 router.post('/create',taiKhoanController.createTaiKhoan)
 
-router.post('/login',taiKhoanController.dangNhap)
+router.post('/login',taiKhoanController.login)
 
 module.exports=router

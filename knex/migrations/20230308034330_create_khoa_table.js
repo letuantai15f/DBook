@@ -1,10 +1,10 @@
 
 exports.up = function (knex) {
-    return knex.schema.createTable("tai_khoan", function (t) {
+    return knex.schema.createTable("khoa", function (t) {
         t.increments("id").primary().unsigned();
-        t.text("tai_khoan").notNull();
-        t.text("mat_khau").notNull();
-        t.integer("quyen").notNull();
+        t.string("ma_khoa").notNull();
+        t.string("ten_khoa").notNull();
+        t.text("mo_ta").nullable();
         t.string("trang_thai").notNull();
         t.timestamp("created_at").notNull().defaultTo(knex.fn.now());
         t.timestamp("updated_at").nullable();
@@ -15,5 +15,5 @@ exports.up = function (knex) {
 
 exports.down = function (knex) {
     return knex.schema
-        .dropTable("tai_khoan");
+        .dropTable("khoa");
 };
