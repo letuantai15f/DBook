@@ -1,9 +1,9 @@
 {
   "development": {
-    "username": "gttrplwd_dbook",
-    "password": "Tai2525123",
-    "database": "gttrplwd_Dbook",
-    "host": "103.110.84.6",
+    "username": "tailee",
+    "password": "sapass",
+    "database": "dbook",
+    "host": "34.95.204.117",
     "dialect": "mysql",
     "logging":false,
     "timezone":"+07:00"

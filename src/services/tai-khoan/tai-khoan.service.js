@@ -19,7 +19,7 @@ const createTaiKhoan = async (data) => {
         return error
     }
 }
-const dangNhap = async (data) => {
+const login = async (data) => {
     try {
         const taiKhoan = await TaiKhoan.findOne({ where: { tai_khoan: data.tai_khoan } })
         if (taiKhoan) {
@@ -37,4 +37,4 @@ const getTaiKhoan = async (data) => {
     return await TaiKhoan.findOne({ where: { tai_khoan: data.tai_khoan } })
 }
 
-module.exports = { createTaiKhoan, dangNhap, getTaiKhoan }
+module.exports = { createTaiKhoan, login, getTaiKhoan }

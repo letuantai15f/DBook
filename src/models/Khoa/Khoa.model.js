@@ -8,6 +8,7 @@ const Khoa=Sequelizer.sequelize.define("khoa",{
         autoIncrement: true,
         primaryKey: true,
     },
+    ma_khoa:{type:Sequelize.STRING},
     ten_khoa:{type:Sequelize.STRING},
     mo_ta: {type:Sequelize.TEXT},
     trang_thai: {type:Sequelize.STRING},

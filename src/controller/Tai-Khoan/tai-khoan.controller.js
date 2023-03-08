@@ -12,9 +12,9 @@ const createTaiKhoan=async(req,res)=>{
         console.log(error)
     }
 }
-const dangNhap=async(req,res)=>{
+const login=async(req,res)=>{
     try {
-        const tai_khoan=await taiKhoanService.dangNhap(req.body)
+        const tai_khoan=await taiKhoanService.login(req.body)
         if(tai_khoan){
             return res.status(200).json({message:"Success"})
         }else{
@@ -24,4 +24,4 @@ const dangNhap=async(req,res)=>{
         console.log(error)
     }
 }
-module.exports={createTaiKhoan,dangNhap}
+module.exports={createTaiKhoan,login}
