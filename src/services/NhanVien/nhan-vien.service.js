@@ -33,8 +33,13 @@ const deleteNhanVien=async(id)=>{
     
     
 }
+const updateNhanVien=async(id,data)=>{
+    return await NhanVien.update(data,{where:{id}})
+}
 module.exports = {
     createNhanVien,
-    deleteNhanVien
+    deleteNhanVien,
+    getNhanVien,
+    updateNhanVien
 
 }
