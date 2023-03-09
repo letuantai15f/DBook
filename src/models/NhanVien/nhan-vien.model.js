@@ -15,10 +15,8 @@ const NhanVien=Sequelizer.sequelize.define("nhan_vien",{
     chuc_vu:{type:Sequelize.STRING},
     sdt:{type:Sequelize.STRING},
     hinh_anh:{type:Sequelize.TEXT},
-    mo_ta:{type:Sequelize.TEXT},
     trang_thai: {type:Sequelize.STRING},
     tai_khoan_id:{type: Sequelize.INTEGER},
-    khoa_id:{type: Sequelize.INTEGER}
 },{
     timestamps: true,
     underscored: true,

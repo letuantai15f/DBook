@@ -59,4 +59,4 @@ module.exports={
     updateKhoa,
     deleteKhoa,
     getKhoa,
-    getKhoaId,}
+    getKhoaId,} 

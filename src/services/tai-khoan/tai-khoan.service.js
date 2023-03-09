@@ -3,17 +3,11 @@ const TaiKhoan = require('../../models/TaiKhoan/tai-khoang.model')
 
 const createTaiKhoan = async (data) => {
     try {
-        let quyen = 0
-        if (data.quyen == "") {
-            quyen = 1
-        } else {
-            quyen = data.quyen
-        }
         return await TaiKhoan.create({
-            tai_khoan: data.tai_khoan,
-            mat_khau: quyen,
+            tai_khoan: data.sdt,
+            mat_khau: data.mat_khau,
             quyen: data.quyen,
-            trang_thai: data.trang_thai
+            trang_thai: "Created"
         })
     } catch (error) {
         return error

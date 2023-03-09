@@ -4,6 +4,7 @@ exports.up = function (knex) {
         t.increments("id").primary().unsigned();
         t.string("ho_ten").notNull();
         t.string("sdt").notNull();
+        t.string("gioi_tinh").notNull();
         t.string("email").nullable();
         t.string("cccd").nullable();
         t.string("dia_chi").nullable();
