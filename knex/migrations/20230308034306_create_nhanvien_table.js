@@ -11,7 +11,6 @@ exports.up = function (knex) {
         t.date("ngay_sinh").nullable();
         t.integer("tai_khoan_id").unsigned().notNull();
         t.text("hinh_anh").nullable();
-        t.string("chuc_vu").nullable();
         t.string("trang_thai").notNull();
         t.timestamp("created_at").notNull().defaultTo(knex.fn.now());
         t.timestamp("updated_at").nullable();

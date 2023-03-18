@@ -7,7 +7,10 @@ const createTaiKhoan=async(req,res)=>{
             return res.status(200).json({message:"Tài khoản đã tồn tại"})
         }
         const tai_khoan=await taiKhoanService.createTaiKhoan(req.body)
-        return res.status(200).json(tai_khoan)
+        if(tai_khoan){
+             return res.status(200).json(tai_khoan)
+        }
+       
     } catch (error) {
         console.log(error)
     }
@@ -16,7 +19,7 @@ const login=async(req,res)=>{
     try {
         const tai_khoan=await taiKhoanService.login(req.body)
         if(tai_khoan){
-            return res.status(200).json({message:"Success"})
+            return res.status(200).json(tai_khoan)
         }else{
             return res.status(200).json({message:"Fail"})
         }

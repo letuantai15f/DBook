@@ -1,5 +1,7 @@
 const nhanVienService=require('../../services/NhanVien/nhan-vien.service')
 const _ = require("lodash");
+const { Error } = require('sequelize');
+const taiKhoanService=require('../../services/tai-khoan/tai-khoan.service')
 
 
 const getNhanVien=async (req,res,next)=>{
@@ -12,8 +14,15 @@ const getNhanVien=async (req,res,next)=>{
 }
 const createNhanVien=async(req,res,next)=>{
     try {
-        const nhanVien=await nhanVienService.createNhanVien(req.body)
+        const checkNhanVien=await nhanVienService.findNhanVien(req.body)
+        const checkTaiKhoan=await taiKhoanService.getTaiKhoan(req.body)
+        if(checkNhanVien || checkTaiKhoan){
+            return res.status(404).json({message:"Thông tin đã tồn tại"})
+        }else{
+            const nhanVien=await nhanVienService.createNhanVien(req.body)
         return res.status(200).json(nhanVien)
+        }
+        
     } catch (error) {
         console.log(error);
     }
@@ -34,7 +43,7 @@ const updateNhanVien=async(req,res,next)=>{
         if(nhanVien){
             return res.status(200).json({message:"Updated"})
         }else{
-            return res.status(304).json({message:"Erro"})
+            return res.status(4040).json({message:"Erro"})
         }
     } catch (error) {
         console.log(error);

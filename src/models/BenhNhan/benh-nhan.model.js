@@ -12,6 +12,7 @@ const BenhNhan=Sequelizer.sequelize.define("benh_nhan",{
     ngay_sinh: {type:Sequelize.DATE},
     gioi_tinh:{type:Sequelize.STRING},
     cccd:{type:Sequelize.STRING},
+    dia_chi:{type:Sequelize.STRING},
     sdt:{type:Sequelize.STRING},
     email:{type:Sequelize.STRING},
     trang_thai: {type:Sequelize.INTEGER},
