@@ -9,7 +9,9 @@ const LichDat=Sequelizer.sequelize.define("lich_dat",{
         primaryKey: true,
     },
     benh_nhan_id:{type:Sequelize.STRING},
-    nhan_vien_id: {type:Sequelize.STRING},
+    bac_si_id: {type:Sequelize.STRING},
+    ngay_kham_id:{type:Sequelize.INTEGER},
+    gio_kham_id:{type:Sequelize.INTEGER},
     trang_thai: {type:Sequelize.STRING},
 },{
     timestamps: true,
