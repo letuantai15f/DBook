@@ -2,7 +2,7 @@
 const  Sequelize  = require("sequelize");
 const Sequelizer = require("../../core/database");
 
-const NhanVien=Sequelizer.sequelize.define("nhan_vien",{
+const BacSi=Sequelizer.sequelize.define("bac_si",{
     id: {
         type: Sequelize.INTEGER,
         autoIncrement: true,
@@ -14,12 +14,14 @@ const NhanVien=Sequelizer.sequelize.define("nhan_vien",{
     cccd:{type:Sequelize.STRING},
     sdt:{type:Sequelize.STRING},
     hinh_anh:{type:Sequelize.TEXT},
+    khoa_id:{type: Sequelize.INTEGER},
+    mo_ta:{type: Sequelize.INTEGER},
     trang_thai: {type:Sequelize.STRING},
     tai_khoan_id:{type: Sequelize.INTEGER},
 },{
     timestamps: true,
     underscored: true,
-    tableName: 'nhan_vien'
+    tableName: 'bac_si'
 
 });
-module.exports = NhanVien;
+module.exports = BacSi;

@@ -35,7 +35,7 @@ const updateKhoa=async(req,res,next)=>{
         if(khoa){
             return res.status(200).json({message:"Updated"})
         }else{
-            return res.status(304).json({message:"Erro"})
+            return res.status(404).json({message:"Erro"})
         }
     } catch (error) {
         next(error)
@@ -48,7 +48,7 @@ const deleteKhoa=async(req,res,next)=>{
         if(khoa){
             return res.status(200).json({message:"Deleted"})
         }else{
-            return res.status(304).json({message:"Erro"})
+            return res.status(404).json({message:"Erro"})
         }
     } catch (error) {
         next(error)

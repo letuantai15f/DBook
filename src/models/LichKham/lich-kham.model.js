@@ -8,9 +8,10 @@ const LichKham=Sequelizer.sequelize.define("lich_kham",{
         autoIncrement: true,
         primaryKey: true,
     },
-    nhan_vien_id: {type:Sequelize.STRING},
+    bac_si_id: {type:Sequelize.INTEGER},
     ngay_kham:{type:Sequelize.DATE},
-    gio_kham_id:{type:Sequelize.INTEGER},
+    bat_dau: {type:Sequelize.TIME},
+    ket_thuc:{type:Sequelize.TIME},
     trang_thai: {type:Sequelize.STRING},
 },{
     timestamps: true,
