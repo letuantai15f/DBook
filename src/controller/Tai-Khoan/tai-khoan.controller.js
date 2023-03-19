@@ -18,10 +18,11 @@ const createTaiKhoan=async(req,res)=>{
 const login=async(req,res)=>{
     try {
         const tai_khoan=await taiKhoanService.login(req.body)
+        console.log(tai_khoan);
         if(tai_khoan){
             return res.status(200).json(tai_khoan)
         }else{
-            return res.status(200).json({message:"Fail"})
+            return res.status(404).json({message:"Fail"})
         }
     } catch (error) {
         console.log(error)
