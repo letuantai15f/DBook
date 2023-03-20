@@ -2,6 +2,14 @@
 const  Sequelize  = require("sequelize");
 const Sequelizer = require("../../core/database");
 
+/**
+ * @typedef LichKham
+ * @property {string} bac_si_id.required
+ * @property {string} ngay_kham.required
+ * @property {string} bat_dau.required
+ * @property {string} ket_thuc.required
+ * @property {string} trang_thai
+ */
 const LichKham=Sequelizer.sequelize.define("lich_kham",{
     id: {
         type: Sequelize.INTEGER,

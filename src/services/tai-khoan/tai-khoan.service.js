@@ -63,7 +63,7 @@ const login = async (data) => {
     }
 }
 const getTaiKhoan = async (data) => {
-    return await TaiKhoan.findOne({ where: { tai_khoan: data.tai_khoan } })
+    return await TaiKhoan.findOne({ where: { tai_khoan: data.email } })
 }
 const changePass = (passWord) => {
     var salt = bcrypt.genSaltSync(10)

@@ -8,7 +8,8 @@ const app = express();
 const port = 3000;
 require("dotenv").config();
 const api = require("./routes/api");
-const { log } = require("console");
+var multer = require("multer");
+var upload = multer();
 
 // swap
 
@@ -49,15 +50,19 @@ app.engine("hbs", exphbs.engine({ extname: ".hbs" }));
 app.set("view engine", "hbs");
 app.set("views", path.join(__dirname, "resources/views"));
 app.use(express.static(path.join(__dirname, "public")));
+// Post Data
 app.use(bodyParser.json({ limit: "50mb" }));
 app.use(cors())
+app.use(
+    bodyParser.urlencoded({
+        limit: "50mb",
+        extended: true,
+    })
+);
+app.use(upload.array());
 
-
-//Middleware
-// app.use(express.urlencoded());
 
 app.use(express.json());
 app.use("/api", api);
 
-console.log(__dirname);
 app.listen(port);
