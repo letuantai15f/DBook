@@ -40,7 +40,7 @@ const updateBenhNhan=async(id,data)=>{
 }
 const findBenhNhan=async(data)=>{
     try {
-        return await BenhNhan.findAll({where:{
+        return await BenhNhan.findOne({where:{
             [Op.or]:[{email:data.email},{cccd:data.cccd},{sdt:data.sdt}]
         }})
     } catch (error) {
