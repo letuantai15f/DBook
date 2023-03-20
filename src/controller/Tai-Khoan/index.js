@@ -8,13 +8,22 @@ const upload = multer();
 
 /**
  * @route post /tai-khoan/create
- * @group tai-khoan - Operations about create Tai Khoan
+ * @group taiKhoan - Operations about create Tai Khoan
  * @returns {object} 200 - An array of class info by week
  * @param {TaiKhoan.model} tai_khoan.body
  * @returns {Error}  default - Unexpected error
  */
 router.post('/create',taiKhoanController.createTaiKhoan)
 
-router.post('/login',upload.fields([]),taiKhoanController.login)
+
+/**
+ * @route post /tai-khoan/login
+ * @group taiKhoan - Operations about create Tai Khoan
+ * @returns {object} 200 - An array of class info by week
+ * @param {string} tai_khoan.formData.required
+ * @param {string} mat_khau.formData.required
+ * @returns {Error}  default - Unexpected error
+ */
+router.post('/login',taiKhoanController.login)
 
 module.exports=router

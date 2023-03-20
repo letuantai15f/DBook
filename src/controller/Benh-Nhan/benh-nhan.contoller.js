@@ -14,6 +14,7 @@ const getBenhNhan = async (req, res, next) => {
 }
 const createBenhNhan = async (req, res, next) => {
     try {
+
         const checkBenhNhan = await benhNhanService.findBenhNhan(req.body)
         const checkTaiKhoan=await taiKhoanService.getTaiKhoan(req.body)
         if (checkBenhNhan || checkTaiKhoan) {

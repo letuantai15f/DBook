@@ -1,7 +1,13 @@
 
 const  Sequelize  = require("sequelize");
 const Sequelizer = require("../../core/database");
-
+/**
+ * @typedef Khoa
+ * @property {string} ma_khoa.required
+ * @property {string} ten_khoa.required
+ * @property {string} mo_ta
+ * @property {string} trang_thai
+ */
 const Khoa=Sequelizer.sequelize.define("khoa",{
     id: {
         type: Sequelize.INTEGER,
