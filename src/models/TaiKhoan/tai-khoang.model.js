@@ -17,6 +17,7 @@
 //     return TaiKhoan;
 // };
 
+const { verify } = require("jsonwebtoken");
 const  Sequelize  = require("sequelize");
 const Sequelizer = require("../../core/database");
 
@@ -37,7 +38,8 @@ const TaiKhoan=Sequelizer.sequelize.define("tai_khoan",{
     tai_khoan:{type:Sequelize.STRING},
     mat_khau: {type:Sequelize.STRING},
     quyen:{type:Sequelize.INTEGER},
-    trang_thai: {type:Sequelize.STRING}
+    trang_thai: {type:Sequelize.STRING},
+    verify:{type:Sequelize.STRING},
 },{
     timestamps: true,
     underscored: true,

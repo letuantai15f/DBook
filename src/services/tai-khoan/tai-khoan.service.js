@@ -5,7 +5,8 @@ const NhanVien = require("../../models/NhanVien/nhan-vien.model");
 const BenhNhan = require("../../models/BenhNhan/benh-nhan.model");
 const jwt = require("jsonwebtoken");
 const bcrypt = require("bcrypt");
-
+const mailer=require('../../utils/mailer')
+ 
 const createTaiKhoan = async (data) => {
   try {
     const mat_khau = changePass(data.mat_khau);
@@ -16,6 +17,10 @@ const createTaiKhoan = async (data) => {
         quyen: data.quyen,
         trang_thai: "Created",
       });
+      bcrypt.hash(taiKhoan.tai_khoan,parseInt(process.env.BRYPT_SALT_ROUND)).then((hashEmail)=>{
+        console.log(`${process.env.APP_URL}/api/verify?email=${taiKhoan.tai_khoan}&token=${hashEmail}`);
+        mailer.sendMail(taiKhoan.tai_khoan,"Verify Email",`<a href="${process.env.APP_URL}/api/verify?email=${taiKhoan.tai_khoan}&token=${hashEmail}"> Xác thực tài khoản </a>`)
+      })
       return taiKhoan;
     }
   } catch (error) {
@@ -27,7 +32,7 @@ const login = async (data) => {
     const taiKhoan = await TaiKhoan.findOne({
       where: { tai_khoan: data.tai_khoan },
     });
-    if (taiKhoan) {
+    if (taiKhoan && taiKhoan.verify=='Verified') {
       let check = bcrypt.compareSync(data.mat_khau, taiKhoan.mat_khau);
       if (check) {
         let user;
@@ -55,7 +60,6 @@ const login = async (data) => {
         }
         const payload = { id: user.id, quyen: taiKhoan.quyen };
         const token = jwt.sign(payload, process.env.JWT_SECRET);
-        console.log(user, 1);
         return {
           token: token,
           userID: user.id,
@@ -73,11 +77,20 @@ const login = async (data) => {
   }
 };
 const getTaiKhoan = async (data) => {
-    return await TaiKhoan.findOne({ where: { tai_khoan: data.email } })
+  const tai_khoan=data.email
+    return await TaiKhoan.findOne({ where: { tai_khoan:tai_khoan } })
 }
 const changePass = (passWord) => {
   var salt = bcrypt.genSaltSync(10);
   var hash = bcrypt.hashSync(passWord, salt);
   return hash;
 };
-module.exports = { createTaiKhoan, login, getTaiKhoan };
+const verifyEmail=async(email)=>{
+    try {
+      return await TaiKhoan.update({verify:'Verified'},{where:{tai_khoan:email}})
+    } catch (error) {
+      console.log(error);
+      return null
+    }
+}
+module.exports = { createTaiKhoan, login, getTaiKhoan,verifyEmail };
