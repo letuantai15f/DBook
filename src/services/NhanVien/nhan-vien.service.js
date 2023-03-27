@@ -42,7 +42,7 @@ const updateNhanVien = async (id, data) => {
 }
 const findNhanVien=async (data)=>{
     try {
-        return await NhanVien.findAll({where:{
+        return await NhanVien.findOne({where:{
             [Op.or]:[{email:data.email},{cccd:data.cccd},{sdt:data.sdt}]
         }})
     } catch (error) {

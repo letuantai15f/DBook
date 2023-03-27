@@ -36,7 +36,7 @@ const updateBacSi=async(id,data)=>{
 }
 const findBacSi=async()=>{
     try {
-        return await BacSi.findAll({where:{
+        return await BacSi.findOne({where:{
             [Op.or]:[{email:data.email},{cccd:data.cccd},{sdt:data.sdt}]
         }})
     } catch (error) {

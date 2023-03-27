@@ -4,11 +4,11 @@ const taiKhoanService = require('../../services/tai-khoan/tai-khoan.service')
 
 const verifyEmail = (req, res) => {
     bcrypt.compare(req.query.email, req.query.token, (err, result) => {
-        console.log(result);
         if (result == true) {
             const verify=taiKhoanService.verifyEmail(req.query.email)
+            console.log(verify);
             if (verify) {
-                return res.status(200).json({ message: "Sucess" })
+                return res.redirect("https://www.google.com")
             } else {
                 return res.status(500).json({ message: "Erro" })
             }

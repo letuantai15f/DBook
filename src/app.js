@@ -1,15 +1,16 @@
 const express = require("express");
 const morgan = require("morgan");
 const cors=require('cors')
-const exphbs = require("express-handlebars");
-const path = require("path");
 var bodyParser = require("body-parser");
 const app = express();
-const port = 3000;
+const port = 6001;
+const http=require('http')
+const {Server}=require('socket.io')
 require("dotenv").config();
 const api = require("./routes/api");
 var multer = require("multer");
 var upload = multer();
+const tuVan=require('../fpg')
 
 // swap
 
@@ -45,11 +46,8 @@ let options = {
 };
 expressSwagger(options);
 
-// Template engine
-app.engine("hbs", exphbs.engine({ extname: ".hbs" }));
-app.set("view engine", "hbs");
-app.set("views", path.join(__dirname, "resources/views"));
-app.use(express.static(path.join(__dirname, "public")));
+
+  
 // Post Data
 app.use(bodyParser.json({ limit: "50mb" }));
 app.use(cors())
@@ -59,10 +57,40 @@ app.use(
         extended: true,
     })
 );
-app.use(upload.array());
 
+const server = http.createServer(app);
+const io = new Server(server, {
+    cors: {
+      origin: "http://localhost:3000",
+      methods: ["GET", "POST"],
+    },
+  });
+  
+io.on("connection", (socket) => {
+    console.log(`User Connected: ${socket.id}`);
+  
+    socket.on("join_room", (data) => {
+      socket.join(data);
+      console.log(`User with ID: ${socket.id} joined room: ${data}`);
+    });
+  
+    socket.on("send_message", (data) => {
+      socket.to(data.room).emit("receive_message", data);
+    });
+  
+    socket.on("disconnect", () => {
+      console.log("User Disconnected", socket.id);
+    });
+  });
+app.use(upload.array());
+// let namHienTai=2022
+// let namMoi= new Date()
+
+// if((namMoi.getFullYear()-namHienTai)==1){
+//   console.log(2);
+// }
 
 app.use(express.json());
 app.use("/api", api);
 
-app.listen(port);
+server.listen(port);

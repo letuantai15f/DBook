@@ -17,6 +17,7 @@ const createNhanVien=async(req,res,next)=>{
         const checkNhanVien=await nhanVienService.findNhanVien(req.body)
         const checkTaiKhoan=await taiKhoanService.getTaiKhoan(req.body)
         if(checkNhanVien || checkTaiKhoan){
+            console.log(checkNhanVien,checkTaiKhoan);
             return res.status(404).json({message:"Thông tin đã tồn tại"})
         }else{
             const nhanVien=await nhanVienService.createNhanVien(req.body)

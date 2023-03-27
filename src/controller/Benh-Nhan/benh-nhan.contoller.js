@@ -53,9 +53,22 @@ const updateBenhNhan = async (req, res, next) => {
         console.log(error);
     }
 }
+const tuVanCK=async(req,res,next)=>{
+    try {
+        const data=req.query.trieuChung
+        const khoa=benhNhanService.tuVanCK(data)
+        if(khoa){
+            return res.status(200).json(khoa)
+        }else{
+            return res.status(200).json({message:"Xin lỗi chúng tôi còn quá ít dữ liệu để tư vấn cho bạn !"})
+        }
+    } catch (error) {
+        console.log(error);
+    }
+}
 module.exports = {
     getBenhNhan,
     deleteBenhNhan,
     createBenhNhan,
-    updateBenhNhan
+    updateBenhNhan,tuVanCK
 }

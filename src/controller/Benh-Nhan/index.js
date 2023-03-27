@@ -35,5 +35,12 @@ router.delete('/delete',benhNhanController.deleteBenhNhan)
  * @returns {Error}  default - Unexpected error
  */
 router.put('/update',benhNhanController.updateBenhNhan)
-
+/**
+ * @route get /benh-nhan/trieu-chung
+ * @group benhNhan 
+ * @param {string} trieuChung.query
+ * @returns {object} 200 
+ * @returns {Error}  default - Unexpected error
+ */
+router.get('/trieu-chung',benhNhanController.tuVanCK)
 module.exports=router
