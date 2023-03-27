@@ -25,5 +25,23 @@ router.post('/create',taiKhoanController.createTaiKhoan)
  * @returns {Error}  default - Unexpected error
  */
 router.post('/login',taiKhoanController.login)
+/**
+ * @route post /tai-khoan/forgot
+ * @group taiKhoan - Operations about create Tai Khoan
+ * @returns {object} 200 - An array of class info by week
+ * @param {string} email.query.required
+ * @returns {Error}  default - Unexpected error
+ */
+router.post('/forgot',taiKhoanController.forgotMatKhau)
+/**
+ * @route get /tai-khoan/verifyMatKhau
+ * @group taiKhoan - Operations about create Tai Khoan
+ * @returns {object} 200 - An array of class info by week
+ * @param {string} email.query.required
+ * @param {string} token.query.required
+ * @param {string} mat_khau.query.required
+ * @returns {Error}  default - Unexpected error
+ */
+router.get('/verifyMatKhau',taiKhoanController.verifyMatKhau)
 
 module.exports=router

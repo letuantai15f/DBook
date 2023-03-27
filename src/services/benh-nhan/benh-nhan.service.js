@@ -4,6 +4,7 @@ const { Op } = require('sequelize');
 const BenhNhan=require('../../models/BenhNhan/benh-nhan.model')
 const TaiKhoan = require('../../models/TaiKhoan/tai-khoang.model')
 const taiKhoanService = require('../../services/tai-khoan/tai-khoan.service');
+const dataTuVan=require('../../../fpg')
 
 const getBenhNhan=async()=>{
     return await BenhNhan.findAll()
@@ -47,6 +48,10 @@ const findBenhNhan=async(data)=>{
         console.log(error);
     }
 }
+const tuVanCK=async(data)=>{
+    const trieuChung=dataTuVan.dataTuVan
+    console.log(trieuChung);
+}
 
 
 module.exports={
@@ -54,5 +59,5 @@ module.exports={
     createBenhNhan,
     deleteBenhNhan,
     updateBenhNhan,
-    findBenhNhan
+    findBenhNhan,tuVanCK
     }

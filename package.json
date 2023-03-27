@@ -38,13 +38,14 @@
     "multer": "^1.4.5-lts.1",
     "mysql": "^2.18.1",
     "mysql2": "^3.1.1",
-    "node-fpgrowth": "^1.2.1",
+    "node-fpgrowth": "^0.1.1",
     "nodemailer": "^6.9.1",
     "nodemon": "^2.0.20",
     "passport-local": "^1.0.0",
     "sequelize": "^6.6.4",
     "socket.io": "^4.5.3",
-    "webrtc": "^1.14.1"
+    "webrtc": "^1.14.1",
+    "xlsx": "^0.18.5"
   },
   "devDependencies": {
     "sequelize-cli": "^6.6.0"
