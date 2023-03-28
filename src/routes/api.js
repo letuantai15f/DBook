@@ -10,6 +10,7 @@ const BacSi=require('../controller/Bac-Si')
 const LichDat=require('../controller/Lich-Dat')
 const LichKham=require('../controller/Lich-Kham')
 const Verify=require('../controller/Verify')
+const TrieuChung=require('../controller/Trieu-Chung-Tu-Van')
 
 router.use('/nhan-vien',NhanVien)
 router.use('/tai-khoan',TaiKhoan)
@@ -19,6 +20,7 @@ router.use('/bac-si',BacSi)
 router.use('/lich-dat',LichDat)
 router.use('/lich-kham',LichKham)
 router.use('/verify',Verify)
+router.use('/trieu-chung',TrieuChung)
 
 
 module.exports=router

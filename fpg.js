@@ -37,8 +37,9 @@ fpgrowth.exec(transactions)
 });
 const dataTuVan=[]
   for(let i=0;i<tv.length;i++){
-    if(tv[i].includes('Da liễu') || tv[i].includes('Mắt') || tv[i].includes('Xương khớp') || tv[i].includes('Nội tiết') || tv[i].includes('Hô hấp') || tv[i].includes('Tim mạch')){
+    if(tv[i].includes('da liễu') || tv[i].includes('mắt') || tv[i].includes('xương khớp') || tv[i].includes('nội tiết') || tv[i].includes('hô hấp') || tv[i].includes('tim mạch')){
       dataTuVan.push(tv[i])
     }
   }
+
 module.exports={dataTuVan}
