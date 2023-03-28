@@ -56,7 +56,7 @@ const updateBenhNhan = async (req, res, next) => {
 const tuVanCK=async(req,res,next)=>{
     try {
         const data=req.query.trieuChung
-        const khoa=benhNhanService.tuVanCK(data)
+        const khoa=await benhNhanService.tuVanCK(data)
         if(khoa){
             return res.status(200).json(khoa)
         }else{
