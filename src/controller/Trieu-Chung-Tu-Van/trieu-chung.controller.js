@@ -11,10 +11,14 @@ const getTrieuChungAll=async(req,res)=>{
 }
 const findTrieuChung=async(req,res)=>{
     const where={}
-    const input=req.query.trieuChung
+    const data=req.query.trieuChung
     try {
-        if(input){
-           where.trieu_chung={ [Op.like]: `%${input}%` }; 
+        if(data){
+            let input = data.split(",");
+            for(let i=0;i<input.length;i++){
+               where.trieu_chung={ [Op.like]: `%${input[i]}%` };  
+            }
+           
         }
         
         const trieuChung2=await trieuChungService.findTrieuChung(where)
