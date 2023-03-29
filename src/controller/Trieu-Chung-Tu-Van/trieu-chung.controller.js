@@ -20,7 +20,6 @@ const findTrieuChung=async(req,res)=>{
             }
            
         }
-        
         const trieuChung2=await trieuChungService.findTrieuChung(where)
         return res.status(200).json(trieuChung2)
     } catch (error) {
