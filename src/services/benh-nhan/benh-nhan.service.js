@@ -4,7 +4,8 @@ const { Op } = require('sequelize');
 const BenhNhan = require('../../models/BenhNhan/benh-nhan.model')
 const TaiKhoan = require('../../models/TaiKhoan/tai-khoang.model')
 const taiKhoanService = require('../../services/tai-khoan/tai-khoan.service');
-const dataTuVan = require('../../../fpg')
+const trieuChungService=require('../../services/trieu-chung-tu-van/trieu-chung.service')
+// const dataTuVan = require('../../../fpg')
 
 const getBenhNhan = async () => {
     return await BenhNhan.findAll()
@@ -53,41 +54,90 @@ const findBenhNhan = async (data) => {
     }
 }
 const tuVanCK = async (data) => {
-    const trieuChung = dataTuVan.dataTuVan;
-    const input = data.split(",");
-    const output = []
-    const khoa=[]
+    let trieuChung = global.trieuChung
+    let input = data.split(",");
+    let output = []
+    let khoa = []
+    let trieuChungTuVan = []
     for (let i = 0; i < trieuChung.length; i++) {
         const check = input.filter(e => trieuChung[i].includes(e))
         if (check.length == input.length) {
             output.push(trieuChung[i])
         }
     }
-    for(let i=0;i<output.length;i++){
-        if(output[i].includes('nội tiết')){
+
+    for (let i = 0; i < output.length; i++) {
+
+        if (output[i].includes('nội tiết')) {
+            const index = output[i].indexOf('nội tiết');
+            if (index > -1) {
+                const trieuChung = output[i].filter((data, i) => i !== index)
+                trieuChungTuVan.push(trieuChung)
+            }
             khoa.push('nội tiết')
         }
-        if(output[i].includes('mắt')){
+        if (output[i].includes('mắt')) {
+            const index = output[i].indexOf('mắt');
+            if (index > -1) {
+                const trieuChung = output[i].filter((data, i) => i !== index)
+                trieuChungTuVan.push(trieuChung)
+            }
             khoa.push('mắt')
         }
-        if(output[i].includes('nội tiết')){
-            khoa.push('nội tiết')
+        if (output[i].includes('hô hấp')) {
+            let index = output[i].indexOf('hô hấp');
+            if (index > -1) {
+                const trieuChung = output[i].filter((data, i) => i !== index)
+                trieuChungTuVan.push(trieuChung)
+            }
+            khoa.push('hô hấp')
         }
-        if(output[i].includes('da liễu')){
+        if (output[i].includes('da liễu')) {
+            const index = output[i].indexOf('da liễu');
+            if (index > -1) {
+                const trieuChung = output[i].filter((data, i) => i !== index)
+                trieuChungTuVan.push(trieuChung)
+            }
             khoa.push('da liễu')
         }
-        if(output[i].includes('xương khớp')){
+        if (output[i].includes('xương khớp')) {
+            const index = output[i].indexOf('xương khớp');
+            if (index > -1) {
+                const trieuChung = output[i].filter((data, i) => i !== index)
+                trieuChungTuVan.push(trieuChung)
+            }
             khoa.push('xướng khớp')
         }
-        if(output[i].includes('tim mạch')){
+        if (output[i].includes('tim mạch')) {
+            const index = output[i].indexOf('tim mạch');
+            if (index > -1) {
+                const trieuChung = output[i].filter((data, i) => i !== index)
+                trieuChungTuVan.push(trieuChung)
+            }
             khoa.push('tim mạch')
         }
+
+
     }
-    const uniqueSet=new Set(khoa)
-    const khoaOutput=[...uniqueSet]
-    const out={}
-    out.trieuChung=output
-    out.khoa=khoaOutput
+
+    trieuChungTuVan.map(e=>{
+        let k=0;
+        for(let i=0;i<trieuChungTuVan.length;i++){
+            const check=e.filter(el=>trieuChungTuVan[i].includes(el))
+            if(check.length==trieuChungTuVan[i].length && k==1 ){
+                trieuChungTuVan.splice(i, 1);
+            }else if(check.length==trieuChungTuVan[i].length && k==0 && check.length==e.length){
+                k=1;
+            }
+        }
+    })
+
+    let uniqueSet = new Set(khoa)
+    let khoaOutput = [...uniqueSet]
+    let out = {}
+    out.trieuChung = trieuChungTuVan
+    out.khoa = khoaOutput
+
     return out
 }
 
