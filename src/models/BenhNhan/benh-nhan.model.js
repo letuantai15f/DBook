@@ -10,7 +10,7 @@ const Sequelizer = require("../../core/database");
  * @property {string} cccd.required
  * @property {string} sdt.required
  * @property {string} email.required
- * @property {string} mo_ta
+ * @property {string} mat_khau
  */
 const BenhNhan=Sequelizer.sequelize.define("benh_nhan",{
     id: {

@@ -13,7 +13,6 @@ const getBenhNhan = async () => {
 const createBenhNhan = async (data) => {
     data.tai_khoan = data.email;
     data.quyen = 4;
-    data.mat_khau = "123456";
     data.trang_thai = "Created"
     try {
         const taiKhoan = await taiKhoanService.createTaiKhoan(data)

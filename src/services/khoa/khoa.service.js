@@ -8,6 +8,7 @@ const getKhoa=async()=>{
 const getKhoaId=async(id)=>{
     return await Khoa.findOne({where:{id}})
 }
+
 const createKhoa=async(data)=>{
     const khoa=await Khoa.create(data)
     return khoa
