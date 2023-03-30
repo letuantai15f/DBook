@@ -1,18 +1,24 @@
-    
-const  Sequelize  = require("sequelize");
+const Sequelize = require("sequelize");
 const Sequelizer = require("../../core/database");
 
-const TCTV=Sequelizer.sequelize.define("trieu_chung_tu_van",{
+/**
+ * @typedef TrieuChung
+ * @property {string} trieu_chung.required
+ */
+const TCTV = Sequelizer.sequelize.define(
+  "trieu_chung_tu_van",
+  {
     id: {
-        type: Sequelize.INTEGER,
-        autoIncrement: true,
-        primaryKey: true,
+      type: Sequelize.INTEGER,
+      autoIncrement: true,
+      primaryKey: true,
     },
-    trieu_chung: {type:Sequelize.TEXT},
-},{
+    trieu_chung: { type: Sequelize.TEXT },
+  },
+  {
     timestamps: true,
     underscored: true,
-    tableName: 'trieu_chung_tu_van'
-
-});
+    tableName: "trieu_chung_tu_van",
+  }
+);
 module.exports = TCTV;
