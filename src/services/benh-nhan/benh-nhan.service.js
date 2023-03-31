@@ -140,7 +140,7 @@ const tuVanCK = async (data) => {
     return out
 }
 const findBenhNhanId=async(id)=>{
-    return await BenhNhan.findOne({where:{tai_khoan_id:id},include:[{model:TaiKhoan,attributes:['hinh']}]})
+    return await BenhNhan.findOne({where:{id}})
 }
 
 
