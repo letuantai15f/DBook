@@ -3,6 +3,7 @@ const router = express.Router();
 const taiKhoanController=require('./tai-khoan.controller')
 const multer = require("multer");
 const TaiKhoan = require('../../models/TaiKhoan/tai-khoang.model');
+const BenhNhan = require('../../models/BenhNhan/benh-nhan.model');
 const upload = multer();
 
 
@@ -10,10 +11,10 @@ const upload = multer();
  * @route post /tai-khoan/create
  * @group taiKhoan - Operations about create Tai Khoan
  * @returns {object} 200 - An array of class info by week
- * @param {TaiKhoan.model} tai_khoan.body
+ * @param {BenhNhan.model} benh_nhan.body
  * @returns {Error}  default - Unexpected error
  */
-router.post('/create',taiKhoanController.createTaiKhoan)
+router.post('/create',taiKhoanController.register)
 
 
 /**

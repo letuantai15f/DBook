@@ -26,6 +26,7 @@ const BenhNhan=Sequelizer.sequelize.define("benh_nhan",{
     dia_chi:{type:Sequelize.STRING},
     sdt:{type:Sequelize.STRING},
     email:{type:Sequelize.STRING},
+    hinh:{type:Sequelize.TEXT},
     trang_thai: {type:Sequelize.INTEGER},
     tai_khoan_id:{type: Sequelize.INTEGER},
 },{

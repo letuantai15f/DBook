@@ -14,10 +14,11 @@ const getListFiles = async (req, res,next) => {
 const uploadHinh=async(req,res,next)=>{
     try {
         const id=req.user.id
+        const quyen=req.user.quyen
         const hinh=req.file
         const name=Date.now()
         if(hinh && id){
-           const status= hinhService.uploadHinhUser(id,hinh,name)
+           const status= hinhService.uploadHinhUser(id,quyen,hinh,name)
            if(status){
             return res.status(200).json({message:"Sucess"})
            }else{

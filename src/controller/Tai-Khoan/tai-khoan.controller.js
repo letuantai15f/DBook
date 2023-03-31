@@ -1,5 +1,6 @@
 const { Op } = require("sequelize");
 const taiKhoanService=require('../../services/tai-khoan/tai-khoan.service')
+const benhNhanService = require('../../services/benh-nhan/benh-nhan.service')
 const bcrypt=require('bcrypt')
 
 const createTaiKhoan=async(req,res)=>{
@@ -49,7 +50,22 @@ const forgotMatKhau= (req,res)=>{
         return error
     }
 }
+const register=async(req,res)=>{
+    try {
+
+        const checkBenhNhan = await benhNhanService.findBenhNhan(req.body)
+        const checkTaiKhoan=await taiKhoanService.getTaiKhoan(req.body)
+        if (checkBenhNhan || checkTaiKhoan) {
+            return res.status(404).json({ message: "Thông tin đã tồn tại" })
+        } else {
+            const benhNhan = await benhNhanService.createBenhNhan(req.body)
+            return res.status(200).json(benhNhan)
+        }
+    } catch (error) {
+        console.log(error);
+    }
+}
 
 
 
-module.exports={createTaiKhoan,login,forgotMatKhau,verifyMatKhau}
+module.exports={createTaiKhoan,login,forgotMatKhau,verifyMatKhau,register}
