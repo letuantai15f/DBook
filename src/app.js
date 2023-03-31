@@ -10,7 +10,8 @@ require("dotenv").config();
 const api = require("./routes/api");
 var multer = require("multer");
 var upload = multer();
-const tuVan = require('../fpg')
+const tuVan = require('../fpg');
+
 
 // swap
 
@@ -49,6 +50,7 @@ expressSwagger(options);
 
 
 // Post Data
+app.use(express.json());
 app.use(bodyParser.json({ limit: "50mb" }));
 app.use(cors())
 app.use(
@@ -82,7 +84,7 @@ io.on("connection", (socket) => {
     console.log("User Disconnected", socket.id);
   });
 });
-app.use(upload.array());
+// app.use(upload.array());
 let i = 0
 tuVan.fpGrowth();
 setInterval(function () {
@@ -93,6 +95,6 @@ setInterval(function () {
     i++
   }
 }, 2147483647);
-app.use(express.json());
+
 app.use("/api", api);
 server.listen(port);

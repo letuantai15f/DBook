@@ -19,6 +19,7 @@
   },
   "homepage": "https://github.com/letuantai15f/DBook#readme",
   "dependencies": {
+    "@google-cloud/storage": "^6.9.4",
     "aws-sdk": "^2.1239.0",
     "bcrypt": "^5.1.0",
     "body-parser": "^1.20.0",
@@ -35,7 +36,7 @@
     "knex": "^2.4.2",
     "module-alias": "^2.2.2",
     "morgan": "^1.10.0",
-    "multer": "^1.4.5-lts.1",
+    "multer": "^1.4.4-lts.1",
     "mysql": "^2.18.1",
     "mysql2": "^3.1.1",
     "node-fpgrowth": "^0.1.1",

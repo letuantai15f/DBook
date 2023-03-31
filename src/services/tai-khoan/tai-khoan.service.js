@@ -15,6 +15,7 @@ const createTaiKhoan = async (data) => {
         tai_khoan: data.tai_khoan,
         mat_khau: mat_khau,
         quyen: data.quyen,
+        hinh:"",
         trang_thai: "Created",
       });
       bcrypt.hash(taiKhoan.tai_khoan, parseInt(process.env.BRYPT_SALT_ROUND)).then((hashEmail) => {
