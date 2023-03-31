@@ -13,7 +13,7 @@ const getListFiles = async (req, res,next) => {
  
 const uploadHinh=async(req,res,next)=>{
     try {
-        const id=req.user
+        const id=req.user.id
         const hinh=req.file
         const name=Date.now()
         if(hinh && id){

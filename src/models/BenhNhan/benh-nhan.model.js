@@ -1,6 +1,7 @@
 
 const  Sequelize  = require("sequelize");
 const Sequelizer = require("../../core/database");
+const TaiKhoan = require("../TaiKhoan/tai-khoang.model");
 
 /**
  * @typedef BenhNhan
@@ -33,4 +34,5 @@ const BenhNhan=Sequelizer.sequelize.define("benh_nhan",{
     tableName: 'benh_nhan'
 
 });
+BenhNhan.belongsTo(TaiKhoan)
 module.exports = BenhNhan;

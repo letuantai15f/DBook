@@ -139,8 +139,8 @@ const tuVanCK = async (data) => {
 
     return out
 }
-const uploadIMG=async(data)=>{
-    
+const findBenhNhanId=async(id)=>{
+    return await BenhNhan.findOne({where:{tai_khoan_id:id},include:[{model:TaiKhoan,attributes:['hinh']}]})
 }
 
 
@@ -149,5 +149,5 @@ module.exports = {
     createBenhNhan,
     deleteBenhNhan,
     updateBenhNhan,
-    findBenhNhan, tuVanCK
+    findBenhNhan, tuVanCK,findBenhNhanId
 }
