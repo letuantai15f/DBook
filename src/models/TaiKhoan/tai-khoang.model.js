@@ -37,7 +37,6 @@ const TaiKhoan=Sequelizer.sequelize.define("tai_khoan",{
     },
     tai_khoan:{type:Sequelize.STRING},
     mat_khau: {type:Sequelize.STRING},
-    hinh:{type:Sequelize.TEXT},
     quyen:{type:Sequelize.INTEGER},
     trang_thai: {type:Sequelize.STRING},
     verify:{type:Sequelize.STRING},

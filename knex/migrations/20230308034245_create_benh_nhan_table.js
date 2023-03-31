@@ -9,6 +9,7 @@ exports.up = function (knex) {
         t.string("cccd").nullable();
         t.string("dia_chi").nullable();
         t.date("ngay_sinh").nullable();
+        t.text("hinh").nullable();
         t.integer("tai_khoan_id").unsigned().notNull();
         t.string("trang_thai").notNull();
         t.timestamp("created_at").notNull().defaultTo(knex.fn.now());

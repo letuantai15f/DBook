@@ -27,6 +27,7 @@ const BacSi=Sequelizer.sequelize.define("bac_si",{
     sdt:{type:Sequelize.STRING},
     khoa_id:{type: Sequelize.INTEGER},
     mo_ta:{type: Sequelize.TEXT},
+    hinh:{type:Sequelize.TEXT},
     trang_thai: {type:Sequelize.STRING},
     tai_khoan_id:{type: Sequelize.INTEGER},
 },{
