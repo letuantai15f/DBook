@@ -11,6 +11,13 @@ const benhNhanController= require('./benh-nhan.contoller')
  */
 router.get('/',benhNhanController.getBenhNhan)
 /**
+ * @route get /benh-nhan/thong-tin
+ * @group benhNhan 
+ * @returns {object} 200 
+ * @returns {Error}  default - Unexpected error
+ */
+router.get('/thong-tin',benhNhanController.findBenhNhanId)
+/**
  * @route post /benh-nhan/create
  * @group benhNhan 
  * @returns {object} 200 

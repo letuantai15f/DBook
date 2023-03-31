@@ -66,9 +66,22 @@ const tuVanCK=async(req,res,next)=>{
         console.log(error);
     }
 }
+const findBenhNhanId=async(req,res)=>{
+    try {
+        const id=req.user.id
+        if(id){
+            const benhNhan=await benhNhanService.findBenhNhanId(id)
+            return res.status(200).json(benhNhan)
+        }else{
+            return res.status(404).json({message:"Không tìm thấy thông tin"})
+        }
+    } catch (error) {
+        console.log(error);
+    }
+}
 module.exports = {
     getBenhNhan,
     deleteBenhNhan,
     createBenhNhan,
-    updateBenhNhan,tuVanCK
+    updateBenhNhan,tuVanCK,findBenhNhanId
 }

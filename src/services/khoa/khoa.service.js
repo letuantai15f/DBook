@@ -10,6 +10,7 @@ const getKhoaId=async(id)=>{
 }
 
 const createKhoa=async(data)=>{
+    
     const khoa=await Khoa.create(data)
     return khoa
 }
