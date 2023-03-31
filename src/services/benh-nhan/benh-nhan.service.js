@@ -139,6 +139,9 @@ const tuVanCK = async (data) => {
 
     return out
 }
+const uploadIMG=async(data)=>{
+    
+}
 
 
 module.exports = {

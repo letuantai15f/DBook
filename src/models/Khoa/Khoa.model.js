@@ -6,6 +6,7 @@ const Sequelizer = require("../../core/database");
  * @property {string} ma_khoa.required
  * @property {string} ten_khoa.required
  * @property {string} mo_ta
+ * @property {string} hinh
  * @property {string} trang_thai
  */
 const Khoa=Sequelizer.sequelize.define("khoa",{
@@ -17,6 +18,7 @@ const Khoa=Sequelizer.sequelize.define("khoa",{
     ma_khoa:{type:Sequelize.STRING},
     ten_khoa:{type:Sequelize.STRING},
     mo_ta: {type:Sequelize.TEXT},
+    hinh: {type:Sequelize.TEXT},
     trang_thai: {type:Sequelize.STRING},
 
 },{

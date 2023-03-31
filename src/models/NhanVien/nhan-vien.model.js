@@ -9,7 +9,6 @@ const Sequelizer = require("../../core/database");
  * @property {string} gioi_tinh.required
  * @property {string} cccd.required
  * @property {string} sdt.required
- * @property {string} hinh_anh
  * @property {string} email.required
  */
 const NhanVien=Sequelizer.sequelize.define("nhan_vien",{
@@ -23,7 +22,6 @@ const NhanVien=Sequelizer.sequelize.define("nhan_vien",{
     gioi_tinh:{type:Sequelize.STRING},
     cccd:{type:Sequelize.STRING},
     sdt:{type:Sequelize.STRING},
-    hinh_anh:{type:Sequelize.TEXT},
     trang_thai: {type:Sequelize.STRING},
     tai_khoan_id:{type: Sequelize.INTEGER},
 },{
