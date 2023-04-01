@@ -2,6 +2,7 @@ const LichDat = require('../../models/LichDat/lich-dat.model')
 
 const getLichDat = async (id) => {
     try {
+        console.log(id);
         return await LichDat.findAll({ where: { benh_nhan_id: id } })
     } catch (error) {
         console.log(error);
