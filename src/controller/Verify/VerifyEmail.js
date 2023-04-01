@@ -8,7 +8,7 @@ const verifyEmail = (req, res) => {
             const verify=taiKhoanService.verifyEmail(req.query.email)
             console.log(verify);
             if (verify) {
-                return res.redirect("https://www.google.com")
+                return res.redirect("http://localhost:3000/xac-thuc")
             } else {
                 return res.status(500).json({ message: "Erro" })
             }
