@@ -41,7 +41,7 @@ router.delete('/delete',benhNhanController.deleteBenhNhan)
  * @param {BenhNhan.model} benh_nhan.body.require
  * @returns {Error}  default - Unexpected error
  */
-router.put('/update',benhNhanController.updateBenhNhan)
+router.put('/update/:id',benhNhanController.updateBenhNhan)
 /**
  * @route get /benh-nhan/trieu-chung
  * @group benhNhan 
