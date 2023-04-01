@@ -50,6 +50,7 @@ const updateBacSi=async(req,res,next)=>{
        console.log(error)
     }
 }
+
 module.exports={
     getBacSi,
     createBacSi,

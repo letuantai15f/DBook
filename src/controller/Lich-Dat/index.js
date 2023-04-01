@@ -2,10 +2,18 @@ const express = require('express');
 const router = express.Router();
 const lichDatController=require('./lich-dat.controller')
 
+
+/**
+ * @route get /lich-dat/all
+ * @group lichDat
+ * @returns {object} 200 
+ * @returns {Error}  default - Unexpected error
+ */
+router.get('/all',lichDatController.getAllLichDat)
+
 /**
  * @route get /lich-dat/
- * @group lichDat 
- * @param {string} benh_nhan_id.query.required
+ * @group lichDat
  * @returns {object} 200 
  * @returns {Error}  default - Unexpected error
  */

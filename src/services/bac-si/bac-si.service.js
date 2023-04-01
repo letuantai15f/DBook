@@ -43,6 +43,9 @@ const findBacSi=async()=>{
         console.log(error);
     }
 }
+const cancelLich=async(id)=>{
+    
+}
 module.exports={
     getBacSi,
     createBacSi,
