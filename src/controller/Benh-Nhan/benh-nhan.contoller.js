@@ -43,13 +43,12 @@ const deleteBenhNhan = async (req, res, next) => {
 const updateBenhNhan = async (req, res, next) => {
     try {
         const id = _.get(req, "params.id")
-        console.log(id);
-        // const benhNhan = await benhNhanService.updateBenhNhan(id, req.body)
-        // if (benhNhan) {
-        //     return res.status(200).json({ message: "Updated" })
-        // } else {
-        //     return res.status(404).json({ message: "Erro" })
-        // }
+        const benhNhan = await benhNhanService.updateBenhNhan(id, req.body)
+        if (benhNhan) {
+            return res.status(200).json({ message: "Updated" })
+        } else {
+            return res.status(404).json({ message: "Erro" })
+        }
     } catch (error) {
         console.log(error);
     }
