@@ -20,7 +20,7 @@ const uploadHinh=async(req,res,next)=>{
         if(hinh && id){
            const status= hinhService.uploadHinhUser(id,quyen,hinh,name)
            if(status){
-            return res.status(200).json({message:"Sucess"})
+            return res.status(200).json({url:"https://storage.googleapis.com/dbook2/" + name + ".jpg"})
            }else{
             return res.status(404).json({message:"Erro"})
            }
