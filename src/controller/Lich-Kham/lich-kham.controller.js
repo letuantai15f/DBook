@@ -1,5 +1,8 @@
 const lichKhamService=require('../../services/lich-kham/lich-kham.service')
 
+
+
+
 const getLichKham=async(req,res,next)=>{
     try {
         const bacSiId=req.query.bacSiId

@@ -1,6 +1,7 @@
 
 const  Sequelize  = require("sequelize");
 const Sequelizer = require("../../core/database");
+const Khoa=require("../Khoa/Khoa.model")
 
 /**
  * @typedef BacSi
@@ -36,4 +37,5 @@ const BacSi=Sequelizer.sequelize.define("bac_si",{
     tableName: 'bac_si'
 
 });
+BacSi.belongsTo(Khoa)
 module.exports = BacSi;
