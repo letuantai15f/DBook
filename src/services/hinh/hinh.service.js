@@ -17,7 +17,12 @@ const uploadHinh = async (data, name) => {
         blobStream.on("finish", () => {
             console.log("Success");
         });
-        blobStream.end(data.buffer);
+        if(data.buffer==undefined){
+            blobStream.end(data[0].buffer);
+        }else{
+            blobStream.end(data.buffer);
+        }
+        
         return true
     } catch (error) {
         console.log(error);
@@ -72,4 +77,4 @@ const uploadHinhUser = async (id, quyen, data, name) => {
         return false
     }
 }
-module.exports = { uploadHinhUser, getHinh }
+module.exports = { uploadHinhUser, getHinh ,uploadHinh}

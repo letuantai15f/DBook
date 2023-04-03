@@ -1,6 +1,8 @@
 const express = require('express');
 const router = express.Router();
 const khoaController=require('./khoa.controller')
+const multer=require('multer')
+const upload=multer();
 
 /**
  * @route get /khoa/
@@ -24,7 +26,7 @@ router.get('/:id',khoaController.getKhoaId)
  * @param {Khoa.model} khoa.body.required
  * @returns {Error}  default - Unexpected error
  */
-router.post('/create',khoaController.createKhoa)
+router.post('/create',upload.array("hinh"),khoaController.createKhoa)
 /**
  * @route delete /khoa/delete
  * @group khoa 
