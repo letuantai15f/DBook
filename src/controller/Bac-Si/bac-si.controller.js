@@ -1,7 +1,7 @@
 const bacSiService=require('../../services/bac-si/bac-si.service')
 const _ = require("lodash");
 const taiKhoanService=require('../../services/tai-khoan/tai-khoan.service');
-const { Op } = require('sequelize');
+const { Op, DATE } = require('sequelize');
 
 const getBacSi=async(req,res,next)=>{
     const where={}
@@ -22,12 +22,14 @@ const getBacSi=async(req,res,next)=>{
 }
 const createBacSi=async(req,res,next)=>{
     try {
+        const file=req.files
+        const name=Date.now()
         const checkBacSi=await bacSiService.findBacSi(req.body)
         const checkTaiKhoan=await taiKhoanService.getTaiKhoan(req.body)
         if(checkBacSi || checkTaiKhoan){
             return res.status(404).json({message:"Thông tin đã tồn tại"})
         }else{
-           const bacSi=await bacSiService.createBacSi(req.body) 
+           const bacSi=await bacSiService.createBacSi(req.body,file,name) 
            return res.status(200).json(bacSi)
         }
     } catch (error) {

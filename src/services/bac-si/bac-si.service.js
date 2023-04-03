@@ -1,18 +1,21 @@
 const BacSi=require('../../models/BacSi/bac-si.model')
 const Khoa = require('../../models/Khoa/Khoa.model')
 const taiKhoanService = require('../../services/tai-khoan/tai-khoan.service')
+const hinhService=require('../hinh/hinh.service')
+const {Op}=require('sequelize')
 
 
 const getBacSi=async(where)=>{
     return await BacSi.findAll({where,include:[{model:Khoa}]})
 }
-const createBacSi=async(data)=>{
+const createBacSi=async(data,file,name)=>{
     try {
         //email,sdt check them
+        const hinh=await hinhService.uploadHinh(file,name)
         const checkBacSi=await BacSi.findOne({where:{cccd:data.cccd}})
         if(checkBacSi){
             return;
-        }else{
+        }else if(hinh && !checkBacSi){
             data.tai_khoan=data.email;
             data.quyen = 2;
             data.mat_khau= "123456";
@@ -20,6 +23,7 @@ const createBacSi=async(data)=>{
             const taiKhoan = await taiKhoanService.createTaiKhoan(data)
             if (taiKhoan) {
                 data.tai_khoan_id = taiKhoan.id
+                data.hinh="https://storage.googleapis.com/dbook2/" + name + ".jpg"
                 const bacSi =  await BacSi.create(data)
                 return bacSi
             }
