@@ -2,6 +2,8 @@ const express = require('express');
 const BacSi = require('../../models/BacSi/bac-si.model');
 const router = express.Router();
 const bacSiController=require('./bac-si.controller')
+const multer=require('multer')
+const upload=multer()
 
 /**
  * @route get /bac-si/
@@ -17,7 +19,7 @@ router.get('/',bacSiController.getBacSi)
  * @param {BacSi.model} bac_si.body.required
  * @returns {Error}  default - Unexpected error
  */
-router.post('/create',bacSiController.createBacSi)
+router.post('/create',upload.array("hinh"),bacSiController.createBacSi)
 /**
  * @route delete /bac-si/delete
  * @group bacSi 
