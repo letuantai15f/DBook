@@ -1,6 +1,8 @@
     
 const  Sequelize  = require("sequelize");
 const Sequelizer = require("../../core/database");
+const BenhNhan=require("../BenhNhan/benh-nhan.model")
+const LichKham=require("../LichKham/lich-kham.model")
 
 /**
  * @typedef LichDat
@@ -14,7 +16,7 @@ const LichDat=Sequelizer.sequelize.define("lich_dat",{
         autoIncrement: true,
         primaryKey: true,
     },
-    benh_nhan_id:{type:Sequelize.STRING},
+    benh_nhan_id:{type:Sequelize.INTEGER},
     lich_kham_id:{type:Sequelize.INTEGER},
     trang_thai: {type:Sequelize.STRING},
 },{
@@ -23,4 +25,5 @@ const LichDat=Sequelizer.sequelize.define("lich_dat",{
     tableName: 'lich_dat'
 
 });
+LichDat.belongsTo(LichKham)
 module.exports = LichDat;

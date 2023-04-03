@@ -1,9 +1,10 @@
-const LichDat = require('../../models/LichDat/lich-dat.model')
+const BenhNhan = require('../../models/BenhNhan/benh-nhan.model');
+const LichDat = require('../../models/LichDat/lich-dat.model');
+const LichKham = require('../../models/LichKham/lich-kham.model');
 
 const getLichDat = async (id) => {
     try {
-        console.log(id);
-        return await LichDat.findAll({ where: { benh_nhan_id: id } })
+        return await LichDat.findAll({ where: { benh_nhan_id: id },include:[{model:LichKham}] })
     } catch (error) {
         console.log(error);
     }
@@ -42,7 +43,7 @@ const findLichDatId = async (id) => {
     }
 }
 const getAllLichDat=async(where)=>{
-    return await LichDat.findAll({where})
+    return await LichDat.findAll({where,include:[{model:LichKham},{model:BenhNhan}]})
 }
 
 module.exports = { createLichDat, deleteLichDat, updateLichDat, getLichDat,findLichDatId,getAllLichDat }
