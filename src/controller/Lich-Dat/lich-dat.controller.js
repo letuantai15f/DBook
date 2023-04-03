@@ -26,7 +26,7 @@ const getLichDat = async (req, res, next) => {
     try {
         const id = req.user.id
         const quyen=req.user.quyen
-        if(id && quyen==4){
+        if(id){
           const lichDat = await lichDatService.getLichDat(id)
         return res.status(200).json(lichDat)  
         }else{
