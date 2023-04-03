@@ -3,8 +3,8 @@ const Khoa = require('../../models/Khoa/Khoa.model')
 const taiKhoanService = require('../../services/tai-khoan/tai-khoan.service')
 
 
-const getBacSi=async()=>{
-    return await BacSi.findAll({include:[{model:Khoa}]})
+const getBacSi=async(where)=>{
+    return await BacSi.findAll({where,include:[{model:Khoa}]})
 }
 const createBacSi=async(data)=>{
     try {
