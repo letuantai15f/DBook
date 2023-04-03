@@ -1,10 +1,20 @@
 const bacSiService=require('../../services/bac-si/bac-si.service')
 const _ = require("lodash");
-const taiKhoanService=require('../../services/tai-khoan/tai-khoan.service')
+const taiKhoanService=require('../../services/tai-khoan/tai-khoan.service');
+const { Op } = require('sequelize');
 
 const getBacSi=async(req,res,next)=>{
+    const where={}
+    const khoa_id=req.query.khoa_id
+    const ho_ten=req.query.ho_ten
     try {
-        const bacSi=await bacSiService.getBacSi()
+        if(khoa_id){
+            where.khoa_id=khoa_id
+        }
+        if(ho_ten){
+            where.ho_ten={ [Op.like]: `%${ho_ten}%` }
+        }
+        const bacSi=await bacSiService.getBacSi(where)
         return res.status(200).json(bacSi)
     } catch (error) {
         console.log(error)
