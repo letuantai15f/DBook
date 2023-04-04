@@ -7,8 +7,8 @@ const taiKhoanService = require('../../services/tai-khoan/tai-khoan.service');
 const trieuChungService=require('../../services/trieu-chung-tu-van/trieu-chung.service')
 // const dataTuVan = require('../../../fpg')
 
-const getBenhNhan = async () => {
-    return await BenhNhan.findAll()
+const getBenhNhan = async (where) => {
+    return await BenhNhan.findAll({where})
 }
 const createBenhNhan = async (data) => {
     data.tai_khoan = data.email;

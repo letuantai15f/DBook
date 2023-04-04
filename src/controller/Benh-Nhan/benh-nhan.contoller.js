@@ -5,7 +5,30 @@ const taiKhoanService=require('../../services/tai-khoan/tai-khoan.service')
 
 const getBenhNhan = async (req, res, next) => {
     try {
-        const benhNhan = await benhNhanService.getBenhNhan()
+        const where={}
+        const ho_ten=req.query.ho_ten
+        const trang_thai=req.query.trang_thai
+        const email=req.query.email
+        const sdt=req.query.sdt
+        const cccd=req.query.cccd
+        if(ho_ten){
+            where.ho_ten={ [Op.like]: `%${ho_ten}%` }
+        }
+        if(email){
+            where.email={ [Op.like]: `%${email}%` }
+        }
+        if(sdt){
+            where.sdt={ [Op.like]: `%${sdt}%` }
+        }
+        if(trang_thai){
+            where.trang_thai={ [Op.like]: `%${trang_thai}%` }
+        }else{
+            where.trang_thai="Created"
+        }
+        if(cccd){
+            where.cccd={ [Op.like]: `%${cccd}%` }
+        }
+        const benhNhan = await benhNhanService.getBenhNhan(where)
         return res.status(200).json(benhNhan)
 
     } catch (error) {

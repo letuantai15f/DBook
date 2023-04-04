@@ -5,7 +5,22 @@ const _ = require("lodash");
 
 const getKhoa = async (req, res, next) => {
     try {
-        const khoa = await khoaService.getKhoa();
+        const where={}
+        const ten_khoa=req.query.ten_khoa
+        const ma_khoa=req.query.ma_khoa
+        const trang_thai=req.query.trang_thai
+        if(ten_khoa){
+            where.ten_khoa={ [Op.like]: `%${ten_khoa}%` }
+        }
+        if(ma_khoa){
+            where.ma_khoa={ [Op.like]: `%${ma_khoa}%` }
+        }
+        if(trang_thai){
+            where.trang_thai={ [Op.like]: `%${trang_thai}%` }
+        }else{
+            where.trang_thai="Active"
+        }
+        const khoa = await khoaService.getKhoa(where);
         return res.status(200).json(khoa)
     } catch (error) {
 
