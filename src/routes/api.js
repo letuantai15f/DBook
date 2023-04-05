@@ -13,6 +13,8 @@ const Verify=require('../controller/Verify')
 const TrieuChung=require('../controller/Trieu-Chung-Tu-Van')
 const Hinh=require('../controller/Hinh')
 const Info=require('../controller/Info')
+const Phong=require('../controller/Phong-Chat')
+const Tin=require('../controller/Tin-Nhan')
 
 router.use('/nhan-vien',auth,NhanVien)
 router.use('/tai-khoan',TaiKhoan)
@@ -25,5 +27,7 @@ router.use('/verify',Verify)
 router.use('/trieu-chung',TrieuChung)
 router.use('/hinh',auth,Hinh)
 router.use('/info',Info)
+router.use('/chat',auth,Phong)
+router.use('/tin-nhan',auth,Tin)
 
 module.exports=router
