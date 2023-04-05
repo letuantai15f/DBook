@@ -8,8 +8,7 @@ const PhongChat=Sequelizer.sequelize.define("phong_chat",{
         autoIncrement: true,
         primaryKey: true,
     },
-    benh_nhan_id:{type:Sequelize.STRING},
-    nhan_vien_id:{type:Sequelize.INTEGER},
+    benh_nhan_id:{type:Sequelize.INTEGER},
     trang_thai: {type:Sequelize.STRING},
 },{
     timestamps: true,
