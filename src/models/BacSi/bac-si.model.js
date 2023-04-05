@@ -26,6 +26,8 @@ const BacSi=Sequelizer.sequelize.define("bac_si",{
     gioi_tinh:{type:Sequelize.STRING},
     cccd:{type:Sequelize.STRING},
     sdt:{type:Sequelize.STRING},
+    email:{type:Sequelize.STRING},
+    dia_chi:{type:Sequelize.STRING},
     khoa_id:{type: Sequelize.INTEGER},
     mo_ta:{type: Sequelize.TEXT},
     hinh:{type:Sequelize.TEXT},
