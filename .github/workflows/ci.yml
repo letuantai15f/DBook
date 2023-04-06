@@ -47,7 +47,7 @@ jobs:
 
                nvm instal 14
                npm install -g pm2
-               cd ~/CICD
+               cd ~/Project/DBook
                git pull origin main
                npm install
                npm run build
