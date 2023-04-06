@@ -30,4 +30,5 @@ router.use('/info',Info)
 router.use('/chat',auth,Phong)
 router.use('/tin-nhan',auth,Tin)
 
+
 module.exports=router
