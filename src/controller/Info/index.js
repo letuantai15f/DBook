@@ -19,7 +19,4 @@ router.get('/khoa',khoaController.getKhoa)
  * @returns {Error}  default - Unexpected error
  */
 router.get('/bac-si',bacSiController.getBacSi)
-
-
-
 module.exports=router

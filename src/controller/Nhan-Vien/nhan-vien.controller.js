@@ -2,6 +2,7 @@ const nhanVienService=require('../../services/NhanVien/nhan-vien.service')
 const _ = require("lodash");
 const { Error } = require('sequelize');
 const taiKhoanService=require('../../services/tai-khoan/tai-khoan.service')
+const {Op}=require('sequelize')
 
 
 const getNhanVien=async (req,res,next)=>{
