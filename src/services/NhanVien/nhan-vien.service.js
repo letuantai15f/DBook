@@ -4,8 +4,8 @@ const { sequelize } = require("../../models");
 const taiKhoanService = require('../../services/tai-khoan/tai-khoan.service');
 const { Op } = require('sequelize');
 
-const getNhanVien = async () => {
-    return await NhanVien.findAll()
+const getNhanVien = async (where) => {
+    return await NhanVien.findAll({where})
 }
 const createNhanVien = async (data) => {
     data.tai_khoan=data.email;

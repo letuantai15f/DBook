@@ -18,7 +18,7 @@ const getKhoa = async (req, res, next) => {
         if(trang_thai){
             where.trang_thai={ [Op.like]: `%${trang_thai}%` }
         }else{
-            where.trang_thai="Active"
+            where.trang_thai="Created"
         }
         const khoa = await khoaService.getKhoa(where);
         return res.status(200).json(khoa)
