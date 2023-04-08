@@ -77,7 +77,16 @@ const updateLichDat = async (req, res, next) => {
         console.log(error);
     }
 }
+const getLichTrong=async(req,res,next)=>{
+    try {
+        const lich=await lichDatService.getLichDatTrong(req.body)
+        return res.status(200).json(lich)
+    } catch (error) {
+        console.log(error);
+        next();   
+    }
+}
 
 
 
-module.exports = { createLichDat, deleteLichDat, updateLichDat, getLichDat,getAllLichDat }
+module.exports = {getLichTrong, createLichDat, deleteLichDat, updateLichDat, getLichDat,getAllLichDat }

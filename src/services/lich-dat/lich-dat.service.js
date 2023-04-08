@@ -1,10 +1,10 @@
 const BenhNhan = require('../../models/BenhNhan/benh-nhan.model');
+const Gio = require('../../models/Gio/gio.model');
 const LichDat = require('../../models/LichDat/lich-dat.model');
-const LichKham = require('../../models/LichKham/lich-kham.model');
 
 const getLichDat = async (id) => {
     try {
-        return await LichDat.findAll({ where: { benh_nhan_id: id },include:[{model:LichKham}] })
+        return await LichDat.findAll({ where: { benh_nhan_id: id }, include: [{ model: LichKham }] })
     } catch (error) {
         console.log(error);
     }
@@ -42,8 +42,31 @@ const findLichDatId = async (id) => {
         console.log(error);
     }
 }
-const getAllLichDat=async(where)=>{
-    return await LichDat.findAll({where,include:[{model:LichKham},{model:BenhNhan}]})
+const getAllLichDat = async (where) => {
+    return await LichDat.findAll({ where })
+}
+const getLichDatTrong = async (data) => {
+    const lichDat = await LichDat.findAll({
+        where: { ngay_kham: data.ngay_kham },
+        attributes: ["gio_id"],
+        raw: true,
+        nest: true,
+    })
+    const arrLich=[]
+    const arrGio=[]
+    for(let i=0;i<lichDat.length;i++){
+        arrLich.push(lichDat[i].gio_id)
+    }
+    const gio = await Gio.findAll({raw: true, nest: true,})
+    for(let i=0;i<gio.length;i++){
+        arrGio.push(gio[i].id)
+    }
+    if (lichDat.length == 0) {
+        return gio
+    } else {
+        const id=arrGio.filter(e=>!arrLich.includes(e))
+        return await Gio.findAll({where:{id:id}})
+    }
 }
 
-module.exports = { createLichDat, deleteLichDat, updateLichDat, getLichDat,findLichDatId,getAllLichDat }
+module.exports = { getLichDatTrong, createLichDat, deleteLichDat, updateLichDat, getLichDat, findLichDatId, getAllLichDat }

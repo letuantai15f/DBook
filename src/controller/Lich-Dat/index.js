@@ -19,6 +19,13 @@ router.get('/all',lichDatController.getAllLichDat)
  */
 router.get('/',lichDatController.getLichDat)
 /**
+ * @route get /lich-dat/trong
+ * @group lichDat
+ * @returns {object} 200 
+ * @returns {Error}  default - Unexpected error
+ */
+router.get('/trong',lichDatController.getLichTrong)
+/**
  * @route post /lich-dat/create
  * @group lichDat 
  * @returns {object} 200 
