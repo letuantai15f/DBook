@@ -1,9 +1,10 @@
 const { Op } = require("sequelize");
 const Khoa=require("../../models/Khoa/Khoa.model")
-const hinhService=require('../hinh/hinh.service')
+const hinhService=require('../hinh/hinh.service');
+const BacSi = require("../../models/BacSi/bac-si.model");
 
 const getKhoa=async(where)=>{
-    return await Khoa.findAll({where});
+    return await Khoa.findAll({where,include:{model:BacSi}});
 }
 const getKhoaId=async(id)=>{
     return await Khoa.findOne({where:{id}})

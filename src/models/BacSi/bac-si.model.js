@@ -40,4 +40,5 @@ const BacSi=Sequelizer.sequelize.define("bac_si",{
 
 });
 BacSi.belongsTo(Khoa)
+Khoa.hasMany(BacSi)
 module.exports = BacSi;
