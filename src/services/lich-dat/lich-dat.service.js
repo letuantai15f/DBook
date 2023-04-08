@@ -1,3 +1,4 @@
+const { Op } = require('sequelize');
 const BenhNhan = require('../../models/BenhNhan/benh-nhan.model');
 const Gio = require('../../models/Gio/gio.model');
 const LichDat = require('../../models/LichDat/lich-dat.model');
@@ -47,7 +48,7 @@ const getAllLichDat = async (where) => {
 }
 const getLichDatTrong = async (data) => {
     const lichDat = await LichDat.findAll({
-        where: { ngay_kham: data.ngay_kham },
+        where: { [Op.and]:[{ngay_kham: data.ngay_kham},{bac_si_id:data.bac_si_id}] },
         attributes: ["gio_id"],
         raw: true,
         nest: true,
