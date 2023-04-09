@@ -13,8 +13,8 @@ const Gio=Sequelizer.sequelize.define("gio",{
         autoIncrement: true,
         primaryKey: true,
     },
-    bat_dau:{type:Sequelize.INTEGER},
-    ket_thuc: {type:Sequelize.INTEGER},
+    bat_dau:{type:Sequelize.TIME},
+    ket_thuc: {type:Sequelize.TIME},
     trang_thai: {type:Sequelize.STRING},
 },{
     timestamps: true,
