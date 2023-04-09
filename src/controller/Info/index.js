@@ -27,5 +27,5 @@ router.get('/bac-si',bacSiController.getBacSi)
  * @returns {object} 200 
  * @returns {Error}  default - Unexpected error
  */
-router.get('/lich-trong',lichDatController.getLichTrong)
+router.post('/lich-trong',lichDatController.getLichTrong)
 module.exports=router
