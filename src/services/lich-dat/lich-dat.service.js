@@ -65,8 +65,14 @@ const getLichDatTrong = async (data) => {
     if (lichDat.length == 0) {
         return gio
     } else {
-        const id=arrGio.filter(e=>!arrLich.includes(e))
-        return await Gio.findAll({where:{id:id}})
+        // const id=arrGio.filter(e=>!arrLich.includes(e))
+        for(let i=0;i<arrLich.length;i++){
+            var index=arrGio.indexOf(arrLich[i])
+            if (index > -1) {
+                arrGio.splice(index, 1);
+            }
+        }
+        return await Gio.findAll({where:{id:arrGio}})
     }
 }
 
