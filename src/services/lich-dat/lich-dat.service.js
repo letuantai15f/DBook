@@ -48,31 +48,25 @@ const getAllLichDat = async (where) => {
 }
 const getLichDatTrong = async (data) => {
     const lichDat = await LichDat.findAll({
-        where: { [Op.and]:[{ngay_kham: data.ngay_kham},{bac_si_id:data.bac_si_id}] },
+        where: { [Op.and]: [{ ngay_kham: data.ngay_kham }, { bac_si_id: data.bac_si_id }] },
         attributes: ["gio_id"],
         raw: true,
         nest: true,
     })
-    const arrLich=[]
-    const arrGio=[]
-    for(let i=0;i<lichDat.length;i++){
+    const arrLich = []
+    const arrGio = []
+    for (let i = 0; i < lichDat.length; i++) {
         arrLich.push(lichDat[i].gio_id)
     }
-    const gio = await Gio.findAll({raw: true, nest: true,})
-    for(let i=0;i<gio.length;i++){
+    const gio = await Gio.findAll({ raw: true, nest: true, })
+    for (let i = 0; i < gio.length; i++) {
         arrGio.push(gio[i].id)
     }
     if (lichDat.length == 0) {
         return gio
     } else {
-        // const id=arrGio.filter(e=>!arrLich.includes(e))
-        for(let i=0;i<arrLich.length;i++){
-            var index=arrGio.indexOf(arrLich[i])
-            if (index > -1) {
-                arrGio.splice(index, 1);
-            }
-        }
-        return await Gio.findAll({where:{id:arrGio}})
+        const id=arrGio.filter(e=>!arrLich.includes(e))
+        return await Gio.findAll({ where: { id: id } })
     }
 }
 
