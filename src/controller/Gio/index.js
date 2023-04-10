@@ -12,5 +12,12 @@ const Gio = require('../../models/Gio/gio.model');
  * @returns {Error}  default - Unexpected error
  */
 router.post('/create',gioController.createGio)
+/**
+ * @route get /gio/
+ * @group gio 
+ * @returns {object} 200 
+ * @returns {Error}  default - Unexpected error
+ */
+router.get('/',gioController.getGioAll)
 
 module.exports=router

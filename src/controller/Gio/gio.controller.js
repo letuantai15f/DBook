@@ -19,7 +19,17 @@ const createGio = async (req, res, next) => {
         next()
     }
 }
+const getGioAll=async(req,res,next)=>{
+    try {
+        const where={}
+        const gio= await gioService.getGioAll(where)
+        return res.status(200).json(gio)
+    } catch (error) {
+        console.log(error);
+        next()
+    }
+}
 
 
 
-module.exports = {createGio}
+module.exports = {createGio,getGioAll}
