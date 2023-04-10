@@ -16,7 +16,13 @@ const getGioAll=async(where)=>{
 const getGioBatDau=async(bat_dau)=>{
     return await Gio.findAll({where:{bat_dau:bat_dau}})
 }
+const deleteGio=async(id)=>{
+    return await Gio.update({trang_thai:"Deleted"},{where:{id}})
+}
+const updateGio=async(id,data)=>{
+    return await Gio.update(data,{where:{id}})
+}
 
 
 
-module.exports={createGio,getGioAll,getGioBatDau}
+module.exports={createGio,getGioAll,getGioBatDau,deleteGio,updateGio}

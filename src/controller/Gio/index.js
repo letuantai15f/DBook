@@ -19,5 +19,22 @@ router.post('/create',gioController.createGio)
  * @returns {Error}  default - Unexpected error
  */
 router.get('/',gioController.getGioAll)
+/**
+ * @route delete /gio/delete
+ * @group gio 
+ * @returns {object} 200 
+ * @param {integer} id.query
+ * @returns {Error}  default - Unexpected error
+ */
+router.delete('/delete',gioController.getGioAll)
+/**
+ * @route put /gio/update/{id}
+ * @group gio 
+ * @returns {object} 200 
+ * @param {integer} id.params
+ * @param {Gio.models} gio.body
+ * @returns {Error}  default - Unexpected error
+ */
+router.put('/update/:id',gioController.getGioAll)
 
 module.exports=router
