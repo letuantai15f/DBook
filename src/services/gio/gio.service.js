@@ -14,7 +14,7 @@ const getGioAll=async(where)=>{
     return await Gio.findAll({where})
 }
 const getGioBatDau=async(bat_dau)=>{
-    return await Gio.findAll({where:{bat_dau:bat_dau}})
+    return await Gio.findAll({where:{bat_dau:bat_dau,trang_thai:"Created"}})
 }
 const deleteGio=async(id)=>{
     return await Gio.update({trang_thai:"Deleted"},{where:{id}})
