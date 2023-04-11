@@ -7,7 +7,7 @@ const LichDat = require('../../models/LichDat/lich-dat.model');
 
 const getLichDat = async (id) => {
     try {
-        return await LichDat.findAll({ where: { benh_nhan_id: id }, include: [{ model: BacSi ,include:{model:Khoa}}] })
+        return await LichDat.findAll({ where: { benh_nhan_id: id }, include: [{ model: BacSi ,include:{model:Khoa}},{model:Gio}] })
     } catch (error) {
         console.log(error);
     }
@@ -46,7 +46,7 @@ const findLichDatId = async (id) => {
     }
 }
 const getAllLichDat = async (where) => {
-    return await LichDat.findAll({ where,include:[{model:BenhNhan},{model:BacSi,include:{model:Khoa}}] })
+    return await LichDat.findAll({ where,include:[{model:BenhNhan},{model:BacSi,include:{model:Khoa}},{model:Gio}] })
 }
 const getLichDatTrong = async (data) => {
     const lichDat = await LichDat.findAll({

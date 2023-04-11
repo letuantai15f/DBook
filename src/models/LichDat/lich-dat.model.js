@@ -3,6 +3,7 @@ const  Sequelize  = require("sequelize");
 const Sequelizer = require("../../core/database");
 const BenhNhan=require("../BenhNhan/benh-nhan.model");
 const BacSi = require("../BacSi/bac-si.model");
+const Gio = require("../Gio/gio.model");
 
 
 /**
@@ -32,4 +33,5 @@ const LichDat=Sequelizer.sequelize.define("lich_dat",{
 
 });
 LichDat.belongsTo(BacSi)
+LichDat.belongsTo(Gio)
 module.exports = LichDat;

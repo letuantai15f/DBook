@@ -39,12 +39,23 @@ const verifyMatKhau = (req, res) => {
         }
     })
 }
-const forgotMatKhau= (req,res)=>{
+const forgotMatKhau= async (req,res)=>{
     try {
         const email=req.query.email
-        const sendMail= taiKhoanService.forgotMatKhau(email)
+        const sendMail= await taiKhoanService.forgotMatKhau(email)
         if(sendMail){
             return res.status(200).json({message:"Sent link"})
+        }
+    } catch (error) {
+        return error
+    }
+}
+const changeMatKhau=async (req,res)=>{
+    try {
+        const id=req.user.id
+        const mat_khau= await taiKhoanService.changeMatKhau(id,req.body)
+        if(mat_khau){
+            return res.status(200).json({message:"Updated"})
         }
     } catch (error) {
         return error
@@ -68,4 +79,4 @@ const register=async(req,res)=>{
 
 
 
-module.exports={createTaiKhoan,login,forgotMatKhau,verifyMatKhau,register}
+module.exports={createTaiKhoan,login,forgotMatKhau,verifyMatKhau,register,changeMatKhau}

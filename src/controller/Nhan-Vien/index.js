@@ -2,6 +2,8 @@ const express = require('express');
 const NhanVien = require('../../models/NhanVien/nhan-vien.model');
 const router = express.Router();
 const nhanVienController=require('./nhan-vien.controller')
+const multer=require('multer')
+const upload=multer()
 
 /**
  * @route get /nhan-vien/thong-tin

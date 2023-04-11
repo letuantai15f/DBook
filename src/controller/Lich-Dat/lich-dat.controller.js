@@ -1,21 +1,21 @@
 const lichDatService = require('../../services/lich-dat/lich-dat.service')
-const {Op}=require('sequelize')
+const { Op } = require('sequelize')
 
-const getAllLichDat=async(req,res,next)=>{
+const getAllLichDat = async (req, res, next) => {
     try {
         const id = req.user.id
-        const quyen=req.user.quyen
-        const where={}
-        const trangThai=req.query.trangThai
-        if(id && quyen==3){
-            
-            if(trangThai){
-                where.trang_thai={ [Op.like]: `%${trangThai}%` };
+        const quyen = req.user.quyen
+        const where = {}
+        const trangThai = req.query.trangThai
+        if (id && quyen == 3) {
+
+            if (trangThai) {
+                where.trang_thai = { [Op.like]: `%${trangThai}%` };
             }
-            const lichDat=await lichDatService.getAllLichDat(where)
+            const lichDat = await lichDatService.getAllLichDat(where)
             return res.status(200).json(lichDat)
-        }else{
-            return res.status(404).json({message:"Xin lỗi bạn không có quyền xem trang này"})
+        } else {
+            return res.status(404).json({ message: "Xin lỗi bạn không có quyền xem trang này" })
         }
     } catch (error) {
         console.log(error);
@@ -25,14 +25,14 @@ const getAllLichDat=async(req,res,next)=>{
 const getLichDat = async (req, res, next) => {
     try {
         const id = req.user.id
-        const quyen=req.user.quyen
-        if(id){
-          const lichDat = await lichDatService.getLichDat(id)
-        return res.status(200).json(lichDat)  
-        }else{
-            return res.status(404).json({message:"Xin lỗi bạn không có quyền xem trang này"})
+        const quyen = req.user.quyen
+        if (id) {
+            const lichDat = await lichDatService.getLichDat(id)
+            return res.status(200).json(lichDat)
+        } else {
+            return res.status(404).json({ message: "Xin lỗi bạn không có quyền xem trang này" })
         }
-        
+
     } catch (error) {
         console.log(error);
     }
@@ -61,32 +61,26 @@ const deleteLichDat = async (req, res, next) => {
 const updateLichDat = async (req, res, next) => {
     try {
         const id = req.params.id
-        const lich = await lichDatService.findLichDatId(id)
-        if (lich.trang_thai == "Created") {
-            const lichDat = await lichDatService.updateLichDat(id, req.body)
-            if (lichDat) {
-                return res.status(200).json({ message: "Updated" })
-            } else {
-                return res.status(404).json({ message: "Erro" })
-            }
-        }else{
-            return res.status(404).json({ message: "Lịch đặt đã được chấp nhận, không thể thay đổi" })
+        const lichDat = await lichDatService.updateLichDat(id, req.body)
+        if (lichDat) {
+            return res.status(200).json({ message: "Updated" })
+        } else {
+            return res.status(404).json({ message: "Erro" })
         }
-
     } catch (error) {
         console.log(error);
     }
 }
-const getLichTrong=async(req,res,next)=>{
+const getLichTrong = async (req, res, next) => {
     try {
-        const lich=await lichDatService.getLichDatTrong(req.body)
+        const lich = await lichDatService.getLichDatTrong(req.body)
         return res.status(200).json(lich)
     } catch (error) {
         console.log(error);
-        next();   
+        next();
     }
 }
 
 
 
-module.exports = {getLichTrong, createLichDat, deleteLichDat, updateLichDat, getLichDat,getAllLichDat }
+module.exports = { getLichTrong, createLichDat, deleteLichDat, updateLichDat, getLichDat, getAllLichDat }

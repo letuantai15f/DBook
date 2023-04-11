@@ -44,5 +44,13 @@ router.post('/forgot',taiKhoanController.forgotMatKhau)
  * @returns {Error}  default - Unexpected error
  */
 router.get('/verifyMatKhau',taiKhoanController.verifyMatKhau)
+/**
+ * @route put /tai-khoan/update
+ * @group taiKhoan - Operations about create Tai Khoan
+ * @returns {object} 200 - An array of class info by week
+ * @param {string} mat_khau_moi.body.required
+ * @returns {Error}  default - Unexpected error
+ */
+router.put('/update',taiKhoanController.changeMatKhau)
 
 module.exports=router

@@ -84,11 +84,11 @@ const changePass = (passWord) => {
   var hash = bcrypt.hashSync(passWord, salt);
   return hash;
 };
+
 const forgotMatKhau = async (email) => {
   try {
-    console.log('email:', email);
     bcrypt.hash(email, parseInt(process.env.BRYPT_SALT_ROUND)).then((hashEmail) => {
-      mailer.sendMail(email, "Verify Mật Khẩu", `<a href="${process.env.APP_URL}/api/verifyMatKhau?email=${email}&token=${hashEmail}"> Xác thực tài khoản </a>`)
+      mailer.sendMail(email, "Quên Mật Khẩu", `<a href="ttp://localhost:3000/quen-mat-khau?email=${email}&token=${hashEmail}"> Xác thực tài khoản </a>`)
     })
     return true
   } catch (error) {
@@ -115,4 +115,9 @@ const verifyMatKhau = async (tai_khoan, newPassword) => {
     return null
   }
 }
-module.exports = { createTaiKhoan, login, getTaiKhoan, verifyEmail, verifyMatKhau, forgotMatKhau };
+const changeMatKhau=async(id,data)=>{
+  bcrypt.hash(data.mat_khau_moi, parseInt(process.env.BRYPT_SALT_ROUND)).then(async (hashMatKhau) => {
+    return await TaiKhoan.update({ mat_khau: hashMatKhau }, { where: { id } })
+  })
+}
+module.exports = { createTaiKhoan, login, getTaiKhoan, verifyEmail, verifyMatKhau, forgotMatKhau,changeMatKhau };
