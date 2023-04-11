@@ -49,11 +49,14 @@ const findNhanVien=async (data)=>{
         console.log(error);
     }
 }
+const getThongTin=async(id)=>{
+    return await NhanVien.findOne({where:{id}})
+}
 module.exports = {
     createNhanVien,
     deleteNhanVien,
     getNhanVien,
     updateNhanVien,
-    findNhanVien,
+    findNhanVien,getThongTin
 
 }

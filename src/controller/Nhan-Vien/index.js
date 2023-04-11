@@ -4,6 +4,13 @@ const router = express.Router();
 const nhanVienController=require('./nhan-vien.controller')
 
 /**
+ * @route get /nhan-vien/thong-tin
+ * @group nhanVien 
+ * @returns {object} 200 
+ * @returns {Error}  default - Unexpected error
+ */
+router.get('/thong-tin',nhanVienController.getThongTin)
+/**
  * @route get /nhan-vien/
  * @group nhanVien 
  * @returns {object} 200 
@@ -35,5 +42,6 @@ router.delete('/delete',nhanVienController.deleteNhanVien)
  * @returns {Error}  default - Unexpected error
  */
 router.put('/update/:id',nhanVienController.updateNhanVien)
+
 
 module.exports=router

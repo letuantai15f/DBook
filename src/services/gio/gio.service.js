@@ -2,10 +2,14 @@ const Gio=require('../../models/Gio/gio.model')
 
 const createGio=async(data)=>{
     const gioKetThuc= Number(data.bat_dau.slice(0, 2))+1
+    let phutKetThuc=Number(data.bat_dau.slice(3, 5))
+    // if(phutKetThuc==0){
+    //     phutKetThuc="00"
+    // }
     if(gioKetThuc<10){
-        data.ket_thuc="0"+gioKetThuc+":00:00"
+        data.ket_thuc="0"+gioKetThuc+":"+phutKetThuc+":00"
     }else{
-        data.ket_thuc=gioKetThuc+":00:00"
+        data.ket_thuc=gioKetThuc+":"+phutKetThuc+":00"
     }
     data.trang_thai="Created"
     return await Gio.create(data)

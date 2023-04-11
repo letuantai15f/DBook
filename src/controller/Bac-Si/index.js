@@ -6,6 +6,13 @@ const multer=require('multer')
 const upload=multer()
 
 /**
+ * @route get /bac-si/thong-tin
+ * @group bacSi 
+ * @returns {object} 200 
+ * @returns {Error}  default - Unexpected error
+ */
+router.get('/thongtin',bacSiController.getThongTin)
+/**
  * @route get /bac-si/
  * @group bacSi 
  * @returns {object} 200 

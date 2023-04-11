@@ -51,9 +51,12 @@ const findBacSi=async()=>{
 const cancelLich=async(id)=>{
     
 }
+const getThongTin=async(id)=>{
+    return await BacSi.findOne({where:{id}})
+}
 module.exports={
     getBacSi,
     createBacSi,
     deleteBacSi,
-    updateBacSi,findBacSi
+    updateBacSi,findBacSi, getThongTin
 }
