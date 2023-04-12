@@ -1,5 +1,6 @@
 const BacSi=require('../../models/BacSi/bac-si.model')
 const Khoa = require('../../models/Khoa/Khoa.model')
+const LichDat = require('../../models/LichDat/lich-dat.model')
 const taiKhoanService = require('../../services/tai-khoan/tai-khoan.service')
 const hinhService=require('../hinh/hinh.service')
 const {Op}=require('sequelize')
@@ -48,8 +49,8 @@ const findBacSi=async()=>{
         console.log(error);
     }
 }
-const cancelLich=async(id)=>{
-    
+const getLichBacSi=async(id)=>{
+    return await LichDat.findAll({where:{bac_si_id:id,trang_thai:"Accept"}})
 }
 const getThongTin=async(id)=>{
     return await BacSi.findOne({where:{id}})
@@ -58,5 +59,5 @@ module.exports={
     getBacSi,
     createBacSi,
     deleteBacSi,
-    updateBacSi,findBacSi, getThongTin
+    updateBacSi,findBacSi, getThongTin,getLichBacSi
 }

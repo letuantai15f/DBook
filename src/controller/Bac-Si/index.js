@@ -5,6 +5,14 @@ const bacSiController=require('./bac-si.controller')
 const multer=require('multer')
 const upload=multer()
 
+
+/**
+ * @route get /bac-si/lich-dat
+ * @group bacSi 
+ * @returns {object} 200 
+ * @returns {Error}  default - Unexpected error
+ */
+router.get('/lich-dat',bacSiController.getLichBacSi)
 /**
  * @route get /bac-si/thong-tin
  * @group bacSi 

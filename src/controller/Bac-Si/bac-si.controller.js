@@ -90,10 +90,21 @@ const getThongTin=async (req,res,next)=>{
         next()
     }
 }
+const getLichBacSi=async(req,res,next)=>{
+    try {
+        const id=req.user.id
+        const lich=await bacSiService.getLichBacSi(id)
+        return res.status(200).json(lich)
+        re
+    } catch (error) {
+        console.log(error);
+        next()
+    }
+}
 
 module.exports = {
     getBacSi,
     createBacSi,
     deleteBacSi,
-    updateBacSi,getThongTin
+    updateBacSi,getThongTin,getLichBacSi
 }
