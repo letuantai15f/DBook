@@ -52,11 +52,10 @@ const forgotMatKhau= async (req,res)=>{
 }
 const changeMatKhau=async (req,res)=>{
     try {
-        const id=req.user.id
-        const mat_khau= await taiKhoanService.changeMatKhau(id,req.body)
-        if(mat_khau){
+        const mat_khau= await taiKhoanService.changeMatKhau(req.body)
+        
             return res.status(200).json({message:"Updated"})
-        }
+        
     } catch (error) {
         return error
     }

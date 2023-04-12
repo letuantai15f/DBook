@@ -88,7 +88,7 @@ const changePass = (passWord) => {
 const forgotMatKhau = async (email) => {
   try {
     bcrypt.hash(email, parseInt(process.env.BRYPT_SALT_ROUND)).then((hashEmail) => {
-      mailer.sendMail(email, "Quên Mật Khẩu", `<a href="ttp://localhost:3000/quen-mat-khau?email=${email}&token=${hashEmail}"> Xác thực tài khoản </a>`)
+      mailer.sendMail(email, "Quên Mật Khẩu", `<a href="${process.env.APP_URL_FE}/quen-mat-khau?email=${email}&token=${hashEmail}"> Xác thực tài khoản </a>`)
     })
     return true
   } catch (error) {
@@ -115,9 +115,23 @@ const verifyMatKhau = async (tai_khoan, newPassword) => {
     return null
   }
 }
-const changeMatKhau=async(id,data)=>{
-  bcrypt.hash(data.mat_khau_moi, parseInt(process.env.BRYPT_SALT_ROUND)).then(async (hashMatKhau) => {
-    return await TaiKhoan.update({ mat_khau: hashMatKhau }, { where: { id } })
-  })
+const changeMatKhau=async(data)=>{
+  
+    if(data.quyen==4){
+      const info=await BenhNhan.findOne({where:{id:data.id}})
+      bcrypt.hash(data.mat_khau_moi, parseInt(process.env.BRYPT_SALT_ROUND)).then(async (hashMatKhau) => {
+        return await TaiKhoan.update({ mat_khau: hashMatKhau }, { where: { id:info.tai_khoan_id } })
+      })
+    }else if(data.quyen==3){
+      const info=await NhanVien.findOne({where:{id:data.id}})
+      bcrypt.hash(data.mat_khau_moi, parseInt(process.env.BRYPT_SALT_ROUND)).then(async (hashMatKhau) => {
+        return await TaiKhoan.update({ mat_khau: hashMatKhau }, { where: { id:info.tai_khoan_id } })
+      })
+    }else {
+      const info=await BacSi.findOne({where:{id:data.id}})
+      bcrypt.hash(data.mat_khau_moi, parseInt(process.env.BRYPT_SALT_ROUND)).then(async (hashMatKhau) => {
+        return await TaiKhoan.update({ mat_khau: hashMatKhau }, { where: { id:info.tai_khoan_id } })
+      })
+    }
 }
 module.exports = { createTaiKhoan, login, getTaiKhoan, verifyEmail, verifyMatKhau, forgotMatKhau,changeMatKhau };
