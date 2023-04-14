@@ -19,7 +19,7 @@ router.get('/lich-dat',bacSiController.getLichBacSi)
  * @returns {object} 200 
  * @returns {Error}  default - Unexpected error
  */
-router.get('/thongtin',bacSiController.getThongTin)
+router.get('/thong-tin',bacSiController.getThongTin)
 /**
  * @route get /bac-si/
  * @group bacSi 

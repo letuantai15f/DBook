@@ -7,12 +7,29 @@ const getAllLichDat = async (req, res, next) => {
         const quyen = req.user.quyen
         const where = {}
         const trangThai = req.query.trangThai
+        const ho_ten=req.query.ho_ten
+        const email=req.query.email
+        const sdt = req.query.sdt
+        const ngay_dat=req.query.ngay_dat
+        const whereBN={}
+        if(ho_ten){
+            whereBN.ho_ten={ [Op.like]: `%${ho_ten}%` };
+        }
+        if(email){
+            whereBN.email={ [Op.like]: `%${email}%` };
+        }
+        if(sdt){
+            whereBN.sdt={ [Op.like]: `%${sdt}%` };
+        }
+        if(ngay_dat){
+            where.ngay_kham=ngay_dat
+        }
         if (id && quyen == 3) {
 
             if (trangThai) {
                 where.trang_thai = { [Op.like]: `%${trangThai}%` };
             }
-            const lichDat = await lichDatService.getAllLichDat(where)
+            const lichDat = await lichDatService.getAllLichDat(where,whereBN)
             return res.status(200).json(lichDat)
         } else {
             return res.status(404).json({ message: "Xin lỗi bạn không có quyền xem trang này" })

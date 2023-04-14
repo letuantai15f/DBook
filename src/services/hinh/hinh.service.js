@@ -17,12 +17,12 @@ const uploadHinh = async (data, name) => {
         blobStream.on("finish", () => {
             console.log("Success");
         });
-        if(data.buffer==undefined){
+        if (data.buffer == undefined) {
             blobStream.end(data[0].buffer);
-        }else{
+        } else {
             blobStream.end(data.buffer);
         }
-        
+
         return true
     } catch (error) {
         console.log(error);
@@ -52,7 +52,7 @@ const uploadHinhUser = async (id, quyen, data, name) => {
                 break;
             case 3:
                 const nhanVien = await NhanVien.findOne({ where: { id } })
-                if (benhNhan) {
+                if (nhanVien) {
                     const status = uploadHinh(data, name)
                     if (status) {
                         await NhanVien.update({ hinh: "https://storage.googleapis.com/dbook2/" + name + ".jpg" }, { where: { id } })
@@ -77,4 +77,4 @@ const uploadHinhUser = async (id, quyen, data, name) => {
         return false
     }
 }
-module.exports = { uploadHinhUser, getHinh ,uploadHinh}
+module.exports = { uploadHinhUser, getHinh, uploadHinh }

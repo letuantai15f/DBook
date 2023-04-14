@@ -45,8 +45,8 @@ const findLichDatId = async (id) => {
         console.log(error);
     }
 }
-const getAllLichDat = async (where) => {
-    return await LichDat.findAll({ where,include:[{model:BenhNhan},{model:BacSi,include:{model:Khoa}},{model:Gio}] })
+const getAllLichDat = async (where,whereBN) => {
+    return await LichDat.findAll({ where,include:[{model:BenhNhan,where:whereBN},{model:BacSi,include:{model:Khoa}},{model:Gio}] })
 }
 const getLichDatTrong = async (data) => {
     const lichDat = await LichDat.findAll({
