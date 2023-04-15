@@ -2,7 +2,6 @@ const gioService = require('../../services/gio/gio.service')
 const _ = require("lodash");
 const createGio = async (req, res, next) => {
     try {
-        const target = new Date("1970-01-01T" + req.body.bat_dau);
         const check = await gioService.getGioBatDau(req.body.bat_dau)
         if (check.length > 0) {
             return res.status(404).json({ message: "Giờ đã tồn tại" })
@@ -17,6 +16,7 @@ const createGio = async (req, res, next) => {
     } catch (error) {
         console.log(error);
         next()
+        return res.json(error)
     }
 }
 const getGioAll=async(req,res,next)=>{
