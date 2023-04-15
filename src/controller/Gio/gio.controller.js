@@ -10,7 +10,7 @@ const createGio = async (req, res, next) => {
             if (gio) {
                 return res.status(200).json(gio)
             } else {
-                return res.status(200).json({ message: "Erro" })
+                return res.status(404).json({ message: "Erro" })
             }
         }
     } catch (error) {

@@ -63,7 +63,7 @@ app.use(
 const server = http.createServer(app);
 global.io = new Server(server, {
   cors: {
-    origin: "http://localhost:3000",
+    origin: "http://localhost:3000" || "http://35.240.176.171:3000" ,
     methods: ["GET", "POST"],
   },
 });
