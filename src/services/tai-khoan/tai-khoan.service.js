@@ -31,7 +31,7 @@ const login = async (data) => {
     const taiKhoan = await TaiKhoan.findOne({
       where: { tai_khoan: data.tai_khoan },
     });
-    if (taiKhoan && taiKhoan.verify == 'Verified') {
+    if (taiKhoan && taiKhoan.verify == 'Verified' && taiKhoan.trang_thai=="Created") {
       let check = bcrypt.compareSync(data.mat_khau, taiKhoan.mat_khau);
       if (check) {
         let user;
