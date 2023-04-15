@@ -6,7 +6,7 @@ const getAllLichDat = async (req, res, next) => {
         const id = req.user.id
         const quyen = req.user.quyen
         const where = {}
-        const trangThai = req.query.trangThai
+        const trangThai = req.query.trang_thai
         const ho_ten=req.query.ho_ten
         const email=req.query.email
         const sdt = req.query.sdt
