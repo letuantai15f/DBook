@@ -1,4 +1,5 @@
 const BacSi=require('../../models/BacSi/bac-si.model')
+const BenhNhan = require('../../models/BenhNhan/benh-nhan.model')
 const Khoa = require('../../models/Khoa/Khoa.model')
 const LichDat = require('../../models/LichDat/lich-dat.model')
 const taiKhoanService = require('../../services/tai-khoan/tai-khoan.service')
@@ -50,7 +51,7 @@ const findBacSi=async()=>{
     }
 }
 const getLichBacSi=async(id)=>{
-    return await LichDat.findAll({where:{bac_si_id:id,trang_thai:"Accept"}})
+    return await LichDat.findAll({where:{bac_si_id:id,trang_thai:"Accept"},include:[{model:BenhNhan}]})
 }
 const getThongTin=async(id)=>{
     return await BacSi.findOne({where:{id}})
