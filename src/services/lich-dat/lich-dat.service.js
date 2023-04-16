@@ -1,13 +1,13 @@
 const { Op } = require('sequelize');
 const BenhNhan = require('../../models/BenhNhan/benh-nhan.model');
-const BacSi=require('../../models/BacSi/bac-si.model')
-const Khoa=require('../../models/Khoa/Khoa.model')
+const BacSi = require('../../models/BacSi/bac-si.model')
+const Khoa = require('../../models/Khoa/Khoa.model')
 const Gio = require('../../models/Gio/gio.model');
 const LichDat = require('../../models/LichDat/lich-dat.model');
 
 const getLichDat = async (id) => {
     try {
-        return await LichDat.findAll({ where: { benh_nhan_id: id }, include: [{ model: BacSi ,include:{model:Khoa}},{model:Gio}] })
+        return await LichDat.findAll({ where: { benh_nhan_id: id }, include: [{ model: BacSi, include: { model: Khoa } }, { model: Gio }] })
     } catch (error) {
         console.log(error);
     }
@@ -45,8 +45,8 @@ const findLichDatId = async (id) => {
         console.log(error);
     }
 }
-const getAllLichDat = async (where,whereBN) => {
-    return await LichDat.findAll({ where,include:[{model:BenhNhan,where:whereBN},{model:BacSi,include:{model:Khoa}},{model:Gio}] })
+const getAllLichDat = async (where, whereBN) => {
+    return await LichDat.findAll({ where, include: [{ model: BenhNhan, where: whereBN }, { model: BacSi, include: { model: Khoa } }, { model: Gio }] })
 }
 const getLichDatTrong = async (data) => {
     const lichDat = await LichDat.findAll({
@@ -65,10 +65,20 @@ const getLichDatTrong = async (data) => {
         arrGio.push(gio[i].id)
     }
     if (lichDat.length == 0) {
+        await gio.sort(function (a, b) {
+            return a.bat_dau.localeCompare(b.bat_dau)
+        })
         return gio
     } else {
-        const id=arrGio.filter(e=>!arrLich.includes(e))
-        return await Gio.findAll({ where: { id: id } })
+        const id = arrGio.filter(e => !arrLich.includes(e))
+        const gio2 = await Gio.findAll({
+            where: { id: id }, raw: true,
+            nest: true,
+        })
+        await gio2.sort(function (a, b) {
+            return a.bat_dau.localeCompare(b.bat_dau)
+        })
+        return gio2;
     }
 }
 
