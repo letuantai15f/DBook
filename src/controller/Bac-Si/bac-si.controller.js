@@ -93,7 +93,29 @@ const getThongTin=async (req,res,next)=>{
 const getLichBacSi=async(req,res,next)=>{
     try {
         const id=req.user.id
-        const lich=await bacSiService.getLichBacSi(id)
+        const where={}
+        const whereBN={}
+        where.bac_si_id=id
+        const ho_ten=req.query.ho_ten
+        const email=req.query.email
+        const sdt=req.query.sdt
+        const ngay_kham=req.query.ngay_kham
+        const trang_thai=req.query.trang_thai
+        if(ho_ten){
+            whereBN.ho_ten={ [Op.like]: `%${ho_ten}%` }
+        }
+        if(email){
+            whereBN.email={ [Op.like]: `%${email}%` }
+        }if(sdt){
+            whereBN.sdt={ [Op.like]: `%${sdt}%` }
+        }if(ngay_kham){
+            whereBN.ngay_kham=ngay_kham
+        }if(trang_thai){
+            where.trang_thai=trang_thai
+        }else{
+            where.trang_thai="Accept"
+        }
+        const lich=await bacSiService.getLichBacSi(id,where,whereBN)
         return res.status(200).json(lich)
         re
     } catch (error) {

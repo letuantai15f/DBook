@@ -50,8 +50,8 @@ const findBacSi=async()=>{
         console.log(error);
     }
 }
-const getLichBacSi=async(id)=>{
-    return await LichDat.findAll({where:{bac_si_id:id,trang_thai:"Accept"},include:[{model:BenhNhan}]})
+const getLichBacSi=async(id,where,whereBN)=>{
+       return await LichDat.findAll({where,include:[{model:BenhNhan,where:whereBN}]})
 }
 const getThongTin=async(id)=>{
     return await BacSi.findOne({where:{id}})
