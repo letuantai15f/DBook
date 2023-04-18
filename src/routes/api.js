@@ -26,7 +26,7 @@ router.use('/verify',Verify)
 router.use('/trieu-chung',TrieuChung)
 router.use('/hinh',auth,Hinh)
 router.use('/info',Info)
-router.use('/chat',auth,Phong)
+router.use('/phong-chat',auth,Phong)
 router.use('/tin-nhan',auth,Tin)
 router.use('/gio',Gio)
 
