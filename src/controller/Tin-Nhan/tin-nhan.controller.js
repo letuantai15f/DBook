@@ -12,7 +12,7 @@ const getTinNhanAll=async(req,res,next)=>{
 }
 const createTin=async(req,res,next)=>{
     try {
-        const tin=await tinService.createTin(data)
+        const tin=await tinService.createTin(req.body)
         return res.status(200).json(tin)
     } catch (error) {
         console.log(error);
