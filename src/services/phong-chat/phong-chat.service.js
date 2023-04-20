@@ -1,5 +1,6 @@
 const { where } = require('sequelize')
 const PhongChat=require('../../models/PhongChat/phong-chat.model')
+const BenhNhan = require('../../models/BenhNhan/benh-nhan.model')
 
 const createPhong=async(data)=>{
     return await PhongChat.create(data)
@@ -14,6 +15,6 @@ const cancelYeuCau=async(id)=>{
     return await PhongChat.update({trang_thai:"Created"},{where:{benh_nhan_id:id}})
 }
 const getPhongAll=async()=>{
-    return await PhongChat.findAll({where:{trang_thai:"Req"}})
+    return await PhongChat.findAll({where:{trang_thai:"Req"},include:[{model:BenhNhan}]})
 }
 module.exports={createPhong,getPhong,sendYeuCau,cancelYeuCau,getPhongAll}
