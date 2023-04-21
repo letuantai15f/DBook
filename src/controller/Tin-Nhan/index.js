@@ -18,6 +18,6 @@ router.get('/',tinController.getTinNhanAll)
  * @param {TinNhan.model} tin_nhan.body
  * @returns {Error}  default - Unexpected error
  */
-router.get('/create',tinController.createTin)
+router.post('/create',tinController.createTin)
 
 module.exports=router
