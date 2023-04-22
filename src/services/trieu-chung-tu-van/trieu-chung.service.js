@@ -1,7 +1,11 @@
 const trieuChung=require('../../models/TrieuChungTuVan/trieu-chung-tu-van.model')
 
-const getTrieuChungAll=async()=>{
-    return trieuChung.findAll()
+const getTrieuChungAll=async(where)=>{
+    return trieuChung.findAll({where})
+}
+const getTrieuChungOnly=async()=>{
+    return trieuChung.findAll({attributes:["tc_ck"],raw: true,
+    nest: true,})
 }
 const findTrieuChung=async(where)=>{
     return trieuChung.findAll({where})
@@ -17,5 +21,8 @@ const  importTrieuChung=async(data)=>{
     }
     
 }
+const createTrieuchung=async(data)=>{
+    return await trieuChung.create(data)
+}
 
-module.exports={getTrieuChungAll,findTrieuChung,importTrieuChung}
+module.exports={getTrieuChungAll,findTrieuChung,importTrieuChung,getTrieuChungOnly,createTrieuchung}

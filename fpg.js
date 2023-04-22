@@ -6,18 +6,22 @@ const trieuChungService = require('./src/services/trieu-chung-tu-van/trieu-chung
 
 
 const fpGrowth = async () => {
-  const file = reader.readFile('./DATA.xlsx');
-  const sheet = file.SheetNames
+  const x=await trieuChungService.getTrieuChungOnly()
+  // const file = reader.readFile('./DATA.xlsx');
+  // const sheet = file.SheetNames
   const data = []
   const transactions = [];
   const tv = []
-  for (let i = 0; i < sheet.length; i++) {
-    const arr = reader.utils.sheet_to_json(
-      file.Sheets[sheet[i]])
-    arr.forEach((res) => {
-      data.push(res.tv)
-    })
-  }
+  // for (let i = 0; i < sheet.length; i++) {
+  //   const arr = reader.utils.sheet_to_json(
+  //     file.Sheets[sheet[i]])
+  //   arr.forEach((res) => {
+  //     data.push(res.tv)
+  //   })
+  // }
+    for(let i=0; i<x.length;i++){
+      data.push(x[i].tc_ck)
+    }
 
 
   data.forEach((row) => {
@@ -47,7 +51,6 @@ const fpGrowth = async () => {
       dataTuVan.push({ trieu_chung: tv[i].toString() })
     }
   }
-  trieuChungService.importTrieuChung(dataTuVan)
   return dataTuVan
 }
 
