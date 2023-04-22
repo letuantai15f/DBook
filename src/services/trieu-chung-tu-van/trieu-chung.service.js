@@ -22,6 +22,7 @@ const  importTrieuChung=async(data)=>{
     
 }
 const createTrieuchung=async(data)=>{
+    data.tc_ck=data.trieu_chung+","+data.chuyen_khoa;
     return await trieuChung.create(data)
 }
 
