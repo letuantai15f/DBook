@@ -13,8 +13,8 @@ const findTrieuChung=async(where)=>{
 const  importTrieuChung=async(data)=>{
     try {
         if(data){
-        await trieuChung.destroy({where:{},truncate:true})
-        await trieuChung.bulkCreate(data)
+       const trieu_chung= await trieuChung.bulkCreate(data)
+       return trieu_chung
     }
     } catch (error) {
         console.log(error);
@@ -25,5 +25,6 @@ const createTrieuchung=async(data)=>{
     data.tc_ck=data.trieu_chung+","+data.chuyen_khoa;
     return await trieuChung.create(data)
 }
+
 
 module.exports={getTrieuChungAll,findTrieuChung,importTrieuChung,getTrieuChungOnly,createTrieuchung}
