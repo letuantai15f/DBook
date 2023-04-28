@@ -52,6 +52,15 @@ router.delete('/delete',bacSiController.deleteBacSi)
  * @returns {Error}  default - Unexpected error
  */
 router.put('/update/:id',bacSiController.updateBacSi)
+/**
+ * @route get /bac-si/khoa
+ * @group bacSi 
+ * @returns {object} 200 
+ * @param {string} khoa.body
+ * @returns {Error}  default - Unexpected error
+ */
+router.get('/khoa',bacSiController.getBacSiByKhoa)
+
 
 
 module.exports=router

@@ -123,10 +123,23 @@ const getLichBacSi=async(req,res,next)=>{
         next()
     }
 }
+const getBacSiByKhoa=async(req,res,next)=>{
+    try {
+        const bacSi=await bacSiService.getBacSiByKhoa(req.body)
+        if(bacSi){
+            return res.status(200).json(bacSi)
+        }else{
+            return res.status(404).json({message:"Erro"})
+        }
+    } catch (error) {
+        console.log(error);
+        next()
+    }
+}
 
 module.exports = {
     getBacSi,
     createBacSi,
     deleteBacSi,
-    updateBacSi,getThongTin,getLichBacSi
+    updateBacSi,getThongTin,getLichBacSi,getBacSiByKhoa
 }
