@@ -61,7 +61,11 @@ const getThongTin = async (id) => {
 const getBacSiByKhoa = async (data) => {
     const khoa = await Khoa.findAll({ where: { ten_khoa: data.khoa } , raw: true,
         nest: true,attributes:["id"] })
-    return await BacSi.findAll({ where: { khoa_id: khoa } })
+        const arrayId=[]
+        for(let i=0;i<khoa.length;i++){
+            arrayId.push(khoa[i].id)
+        }
+      return await BacSi.findAll({ where: { khoa_id: arrayId } })
 }
 module.exports = {
     getBacSi,
