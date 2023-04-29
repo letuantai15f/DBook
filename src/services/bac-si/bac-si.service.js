@@ -65,7 +65,7 @@ const getBacSiByKhoa = async (data) => {
         for(let i=0;i<khoa.length;i++){
             arrayId.push(khoa[i].id)
         }
-      return await BacSi.findAll({ where: { khoa_id: arrayId },include: [{ model: Khoa }] })
+      return await BacSi.findAll({ where: { khoa_id: arrayId,trang_thai:"Created" },include: [{ model: Khoa }] })
 }
 module.exports = {
     getBacSi,
