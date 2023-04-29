@@ -36,7 +36,15 @@ const createBacSi = async (data, file, name) => {
     }
 }
 const deleteBacSi = async (id) => {
-    return await BacSi.update({ trang_thai: "Deleted" }, { where: { id } })
+    const bacSi = await BacSi.findAll({
+        where: { id: id }, raw: true,
+        nest: true,
+    })
+    bacSi.map(async (e) => {
+        await BacSi.update({ trang_thai: "Deleted" }, { where: { id: e.id } })
+        await TaiKhoan.update({ trang_thai: "Deleted" }, { where: { id: e.tai_khoan_id } })
+    })
+
 }
 const updateBacSi = async (id, data) => {
     return await BacSi.update(data, { where: { id } })

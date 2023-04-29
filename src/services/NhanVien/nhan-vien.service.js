@@ -32,7 +32,7 @@ const deleteNhanVien = async (id) => {
     })
     nhanVien.map(async (e) => {
         await NhanVien.update({ trang_thai: "Deleted" }, { where: { id: e.id } })
-        await TaiKhoan.update({ trang_thai: 0 }, { where: { id: e.tai_khoan_id } })
+        await TaiKhoan.update({ trang_thai: "Deleted" }, { where: { id: e.tai_khoan_id } })
     })
 
 

@@ -33,8 +33,8 @@ const deleteBenhNhan = async (id) => {
         nest: true
     })
     benhNhan.map(async (e) => {
-        await BenhNhan.update({ trang_thai: "deleted" }, { where: { id: e.id } })
-        await TaiKhoan.update({ trang_thai: 0 }, { where: { id: e.tai_khoan_id } })
+        await BenhNhan.update({ trang_thai: "Deleted" }, { where: { id: e.id } })
+        await TaiKhoan.update({ trang_thai: "Deleted" }, { where: { id: e.tai_khoan_id } })
     })
     return true
 }
