@@ -2,6 +2,7 @@ const BacSi = require('../../models/BacSi/bac-si.model')
 const BenhNhan = require('../../models/BenhNhan/benh-nhan.model')
 const Khoa = require('../../models/Khoa/Khoa.model')
 const LichDat = require('../../models/LichDat/lich-dat.model')
+const TaiKhoan = require('../../models/TaiKhoan/tai-khoang.model')
 const taiKhoanService = require('../../services/tai-khoan/tai-khoan.service')
 const hinhService = require('../hinh/hinh.service')
 const { Op } = require('sequelize')
@@ -44,6 +45,7 @@ const deleteBacSi = async (id) => {
         await BacSi.update({ trang_thai: "Deleted" }, { where: { id: e.id } })
         await TaiKhoan.update({ trang_thai: "Deleted" }, { where: { id: e.tai_khoan_id } })
     })
+    return true
 
 }
 const updateBacSi = async (id, data) => {

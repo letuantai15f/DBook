@@ -34,7 +34,7 @@ const deleteNhanVien = async (id) => {
         await NhanVien.update({ trang_thai: "Deleted" }, { where: { id: e.id } })
         await TaiKhoan.update({ trang_thai: "Deleted" }, { where: { id: e.tai_khoan_id } })
     })
-
+    
 
 }
 const updateNhanVien = async (id, data) => {

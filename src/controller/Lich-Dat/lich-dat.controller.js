@@ -24,11 +24,12 @@ const getAllLichDat = async (req, res, next) => {
         if(ngay_dat){
             where.ngay_kham=ngay_dat
         }
+        if (trangThai) {
+            where.trang_thai = { [Op.like]: `%${trangThai}%` };
+        }else{
+            where.trang_thai="Created"
+        }
         if (id && quyen == 3) {
-
-            if (trangThai) {
-                where.trang_thai = { [Op.like]: `%${trangThai}%` };
-            }
             const lichDat = await lichDatService.getAllLichDat(where,whereBN)
             return res.status(200).json(lichDat)
         } else {
