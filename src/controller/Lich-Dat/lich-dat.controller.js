@@ -7,34 +7,32 @@ const getAllLichDat = async (req, res, next) => {
         const quyen = req.user.quyen
         const where = {}
         const trangThai = req.query.trang_thai
-        const ho_ten=req.query.ho_ten
-        const email=req.query.email
+        const ho_ten = req.query.ho_ten
+        const email = req.query.email
         const sdt = req.query.sdt
-        const ngay_dat=req.query.ngay_dat
-        const whereBN={}
-        if(ho_ten){
-            whereBN.ho_ten={ [Op.like]: `%${ho_ten}%` };
+        const ngay_dat = req.query.ngay_dat
+        const whereBN = {}
+        if (ho_ten) {
+            whereBN.ho_ten = { [Op.like]: `%${ho_ten}%` };
         }
-        if(email){
-            whereBN.email={ [Op.like]: `%${email}%` };
+        if (email) {
+            whereBN.email = { [Op.like]: `%${email}%` };
         }
-        if(sdt){
-            whereBN.sdt={ [Op.like]: `%${sdt}%` };
+        if (sdt) {
+            whereBN.sdt = { [Op.like]: `%${sdt}%` };
         }
-        if(ngay_dat){
-            where.ngay_kham=ngay_dat
+        if (ngay_dat) {
+            where.ngay_kham = ngay_dat
         }
         if (trangThai) {
             where.trang_thai = { [Op.like]: `%${trangThai}%` };
-        }else{
-            where.trang_thai="Created"
-        }
-        if (id && quyen == 3) {
-            const lichDat = await lichDatService.getAllLichDat(where,whereBN)
-            return res.status(200).json(lichDat)
         } else {
-            return res.status(404).json({ message: "Xin lỗi bạn không có quyền xem trang này" })
+            where.trang_thai = "Created"
         }
+
+        const lichDat = await lichDatService.getAllLichDat(where, whereBN)
+        return res.status(200).json(lichDat)
+
     } catch (error) {
         console.log(error);
         next();
