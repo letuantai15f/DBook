@@ -25,6 +25,14 @@ const createTrieuchung=async(data)=>{
     data.tc_ck=data.trieu_chung+","+data.chuyen_khoa;
     return await trieuChung.create(data)
 }
+const deleteTrieuChung=async(id)=>{
+    try {
+        await trieuChung.destroy({where:{id}})
+        return true
+    } catch (error) {
+        return false
+    }
+}
 
 
-module.exports={getTrieuChungAll,findTrieuChung,importTrieuChung,getTrieuChungOnly,createTrieuchung}
+module.exports={getTrieuChungAll,findTrieuChung,importTrieuChung,getTrieuChungOnly,createTrieuchung,deleteTrieuChung}

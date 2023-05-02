@@ -65,5 +65,19 @@ const importTrieuChung = async (req, res, next) => {
         next();
     }
 }
+const deleteTrieuChung=async(req,res,next)=>{
+    try {
+        const id=req.query.id
+        const trieu_chung=await trieuChungService.deleteTrieuChung(id)
+        if(trieu_chung){
+            return res.status(200).json({message:"Deleted"})
+        }else{
+            return res.status(404).json({message:"Erro"})
+        }
+    } catch (error) {
+        console.log(error);
+        next()
+    }
+}
 
-module.exports = { getTrieuChungAll, findTrieuChung, createTrieuChung, importTrieuChung }
+module.exports = { getTrieuChungAll, findTrieuChung, createTrieuChung, importTrieuChung,deleteTrieuChung }

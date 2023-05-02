@@ -24,12 +24,22 @@ router.post('/create',trieuChungController.createTrieuChung)
 /**
  * @route post /trieu-chung/import
  * @group trieuChung 
- * @param{file} file.formData
+ * @param {file} file.formData
  * @produces multipart/form-data
  * @returns {object} 200 
  * @returns {Error}  default - Unexpected error
  */
 router.post('/import',upload.array(['file']),trieuChungController.importTrieuChung)
+
+/**
+ * @route delete /trieu-chung/delete
+ * @group trieuChung 
+ * @param {integer} id.query
+ * @returns {object} 200 
+ * @returns {Error}  default - Unexpected error
+ */
+router.delete('/delete',trieuChungController.deleteTrieuChung)
+
 
 
 module.exports=router
