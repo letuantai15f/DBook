@@ -60,7 +60,7 @@ const getLichDat = async (req, res, next) => {
         if (id) {
             where.benh_nhan_id = id
         }
-        const lichDat = await lichDatService.getLichDat(id, where, whereBS)
+        const lichDat = await lichDatService.getLichDat(where, whereBS)
         return res.status(200).json(lichDat)
 
     } catch (error) {
