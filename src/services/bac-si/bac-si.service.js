@@ -63,7 +63,7 @@ const findBacSi = async () => {
         console.log(error);
     }
 }
-const getLichBacSi = async (id, where, whereBN) => {
+const getLichBacSi = async (where, whereBN) => {
     return await LichDat.findAll({ where, include: [{ model: BenhNhan, where: whereBN },{model:Gio}] })
 }
 const getThongTin = async (id) => {

@@ -115,7 +115,10 @@ const getLichBacSi=async(req,res,next)=>{
         }else{
             where.trang_thai="Accept"
         }
-        const lich=await bacSiService.getLichBacSi(id,where,whereBN)
+        if(id){
+            where.bac_si_id=id
+        }
+        const lich=await bacSiService.getLichBacSi(where,whereBN)
         return res.status(200).json(lich)
         re
     } catch (error) {
