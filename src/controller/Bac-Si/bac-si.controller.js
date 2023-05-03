@@ -95,7 +95,6 @@ const getLichBacSi=async(req,res,next)=>{
         const id=req.user.id
         const where={}
         const whereBN={}
-        where.bac_si_id=id
         const ho_ten=req.query.ho_ten
         const email=req.query.email
         const sdt=req.query.sdt
@@ -120,7 +119,6 @@ const getLichBacSi=async(req,res,next)=>{
         }
         const lich=await bacSiService.getLichBacSi(where,whereBN)
         return res.status(200).json(lich)
-        re
     } catch (error) {
         console.log(error);
         next()
