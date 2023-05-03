@@ -47,7 +47,7 @@ const getLichDat = async (req, res, next) => {
         const ten = req.query.ten
         const whereBS = {}
         if (trangThai) {
-            where.trang_thai = { [Op.like]: `%${trangThai}%` };
+            where.trang_thai = { [Op.like]: `%${trang_thai}%` };
         } else {
             where.trang_thai = "Created"
         }
