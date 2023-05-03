@@ -13,6 +13,7 @@ const Gio = require("../Gio/gio.model");
  * @property {string} ngay_kham.required
  * @property {string} bat_dau.required
  * @property {string} ket_thuc.required
+ * @property {text} mo_ta.required
  * @property {string} trang_thai
  */
 const LichDat=Sequelizer.sequelize.define("lich_dat",{
@@ -25,6 +26,7 @@ const LichDat=Sequelizer.sequelize.define("lich_dat",{
     bac_si_id: {type:Sequelize.INTEGER},
     ngay_kham:{type:Sequelize.DATE},
     gio_id:{type:Sequelize.INTEGER},
+    mo_ta:{type:Sequelize.TEXT},
     trang_thai: {type:Sequelize.STRING},
 },{
     timestamps: true,
