@@ -41,13 +41,27 @@ const getAllLichDat = async (req, res, next) => {
 const getLichDat = async (req, res, next) => {
     try {
         const id = req.user.id
-        const quyen = req.user.quyen
-        if (id) {
-            const lichDat = await lichDatService.getLichDat(id)
-            return res.status(200).json(lichDat)
+        const where = {}
+        const khoa = req.query.khoa
+        const trang_thai = req.query.trang_thai
+        const ten = req.query.ten
+        const whereBS = {}
+        if (trangThai) {
+            where.trang_thai = { [Op.like]: `%${trangThai}%` };
         } else {
-            return res.status(404).json({ message: "Xin lỗi bạn không có quyền xem trang này" })
+            where.trang_thai = "Created"
         }
+        if (khoa) {
+            whereBS.khoa_id = khoa
+        }
+        if (ten) {
+            whereBS.ho_ten = { [Op.like]: `%${ten}%` };
+        }
+        if (id) {
+            where.benh_nhan_id = id
+        }
+        const lichDat = await lichDatService.getLichDat(id, where, whereBS)
+        return res.status(200).json(lichDat)
 
     } catch (error) {
         console.log(error);

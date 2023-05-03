@@ -5,9 +5,9 @@ const Khoa = require('../../models/Khoa/Khoa.model')
 const Gio = require('../../models/Gio/gio.model');
 const LichDat = require('../../models/LichDat/lich-dat.model');
 
-const getLichDat = async (id) => {
+const getLichDat = async (where,whereBS) => {
     try {
-        return await LichDat.findAll({ where: { benh_nhan_id: id }, include: [{ model: BacSi, include: { model: Khoa } }, { model: Gio }] })
+        return await LichDat.findAll({ where, include: [{ model: BacSi,where:whereBS, include: { model: Khoa } }, { model: Gio }] })
     } catch (error) {
         console.log(error);
     }
@@ -60,7 +60,7 @@ const getLichDatTrong = async (data) => {
     for (let i = 0; i < lichDat.length; i++) {
         arrLich.push(lichDat[i].gio_id)
     }
-    const gio = await Gio.findAll({ raw: true, nest: true, })
+    const gio = await Gio.findAll({ where:{trang_thai:"Created"},raw: true, nest: true, })
     for (let i = 0; i < gio.length; i++) {
         arrGio.push(gio[i].id)
     }
