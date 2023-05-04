@@ -23,14 +23,14 @@ const getBacSi = async (req, res, next) => {
         } else {
             where.trang_thai = "Created"
         }
-        if(email){
-            where.email={ [Op.like]: `%${email}%` }
+        if (email) {
+            where.email = { [Op.like]: `%${email}%` }
         }
-        if(sdt){
-            where.sdt={ [Op.like]: `%${sdt}%` }
+        if (sdt) {
+            where.sdt = { [Op.like]: `%${sdt}%` }
         }
-        if(cccd){
-            where.cccd={ [Op.like]: `%${cccd}%` }
+        if (cccd) {
+            where.cccd = { [Op.like]: `%${cccd}%` }
         }
         const bacSi = await bacSiService.getBacSi(where)
         return res.status(200).json(bacSi)
@@ -80,57 +80,58 @@ const updateBacSi = async (req, res, next) => {
         console.log(error)
     }
 }
-const getThongTin=async (req,res,next)=>{
+const getThongTin = async (req, res, next) => {
     try {
-        const id=req.user.id
-        const thongTin=await bacSiService.getThongTin(id)
+        const id = req.user.id
+        const thongTin = await bacSiService.getThongTin(id)
         return res.status(200).json(thongTin)
     } catch (error) {
         console.log(error);
         next()
     }
 }
-const getLichBacSi=async(req,res,next)=>{
+const getLichBacSi = async (req, res, next) => {
     try {
-        const id=req.user.id
-        const where={}
-        const whereBN={}
-        const ho_ten=req.query.ho_ten
-        const email=req.query.email
-        const sdt=req.query.sdt
-        const ngay_kham=req.query.ngay_kham
-        const trang_thai=req.query.trang_thai
-        if(ho_ten){
-            whereBN.ho_ten={ [Op.like]: `%${ho_ten}%` }
+        const id = req.user.id
+        const where = {}
+        const whereBN = {}
+        const ho_ten = req.query.ho_ten
+        const email = req.query.email
+        const sdt = req.query.sdt
+        const ngay_kham = req.query.ngay_kham
+        const trang_thai = req.query.trang_thai
+        if (ho_ten) {
+            whereBN.ho_ten = { [Op.like]: `%${ho_ten}%` }
         }
-        if(email){
-            whereBN.email={ [Op.like]: `%${email}%` }
-        }if(sdt){
-            whereBN.sdt={ [Op.like]: `%${sdt}%` }
-        }if(ngay_kham){
-            whereBN.ngay_kham=ngay_kham
-        }if(trang_thai){
-            where.trang_thai=trang_thai
-        }else{
-            where.trang_thai="Accept"
+        if (email) {
+            whereBN.email = { [Op.like]: `%${email}%` }
+        } if (sdt) {
+            whereBN.sdt = { [Op.like]: `%${sdt}%` }
+        } if (ngay_kham) {
+            var newdate = ngay_kham.split("/").reverse().join("-");
+            whereBN.ngay_kham = newdate
+        } if (trang_thai) {
+            where.trang_thai = trang_thai
+        } else {
+            where.trang_thai = "Accept"
         }
-        if(id){
-            where.bac_si_id=id
+        if (id) {
+            where.bac_si_id = id
         }
-        const lich=await bacSiService.getLichBacSi(where,whereBN)
+        const lich = await bacSiService.getLichBacSi(where, whereBN)
         return res.status(200).json(lich)
     } catch (error) {
         console.log(error);
         next()
     }
 }
-const getBacSiByKhoa=async(req,res,next)=>{
+const getBacSiByKhoa = async (req, res, next) => {
     try {
-        const bacSi=await bacSiService.getBacSiByKhoa(req.body)
-        if(bacSi){
+        const bacSi = await bacSiService.getBacSiByKhoa(req.body)
+        if (bacSi) {
             return res.status(200).json(bacSi)
-        }else{
-            return res.status(404).json({message:"Erro"})
+        } else {
+            return res.status(404).json({ message: "Erro" })
         }
     } catch (error) {
         console.log(error);
@@ -142,5 +143,5 @@ module.exports = {
     getBacSi,
     createBacSi,
     deleteBacSi,
-    updateBacSi,getThongTin,getLichBacSi,getBacSiByKhoa
+    updateBacSi, getThongTin, getLichBacSi, getBacSiByKhoa
 }
