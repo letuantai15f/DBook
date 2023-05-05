@@ -59,16 +59,12 @@ app.use(
     extended: true,
   })
 );
-app.use(function(req, res, next) {
-  res.header("Access-Control-Allow-Origin", "*");
-  res.header("Access-Control-Allow-Headers", "Origin, X-Requested-With, Content-Type, Accept");
-  next();
-});
+
 
 const server = http.createServer(app);
 global.io = new Server(server, {
   cors: {
-    origin: "http://localhost:3000" || "http://35.240.176.171:3000" ,
+    origin:  '*',
     methods: ["GET", "POST"],
   },
 });
