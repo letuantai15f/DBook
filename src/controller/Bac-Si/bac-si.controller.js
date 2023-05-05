@@ -108,8 +108,8 @@ const getLichBacSi = async (req, res, next) => {
         } if (sdt) {
             whereBN.sdt = { [Op.like]: `%${sdt}%` }
         } if (ngay_kham) {
-            var newdate = ngay_kham.split("/").reverse().join("-");
-            whereBN.ngay_kham = newdate
+            // var newdate = ngay_kham.split("/").reverse().join("-");
+            where.ngay_kham = ngay_kham
         } if (trang_thai) {
             where.trang_thai = trang_thai
         } else {
